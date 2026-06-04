@@ -1,0 +1,60 @@
+{
+  "analysis_date": "2026-06-04T15:11:03.247103",
+  "screening": {
+    "Aave V3": {
+      "tvl_eth_usd": 9750782176.0,
+      "tvl_change_30d_pct": -15.033841464215369,
+      "eligible": true
+    },
+    "Spark": {
+      "tvl_eth_usd": 4600468978.72951,
+      "tvl_change_30d_pct": -10.013837547412551,
+      "eligible": true
+    },
+    "Morpho": {
+      "tvl_eth_usd": 3374998276.0,
+      "tvl_change_30d_pct": -11.144806386769456,
+      "eligible": true
+    },
+    "Compound III": {
+      "tvl_eth_usd": 959273616.0,
+      "tvl_change_30d_pct": -18.47336390733414,
+      "eligible": true
+    },
+    "Euler V2": {
+      "tvl_eth_usd": 125415761.0,
+      "tvl_change_30d_pct": -63.07087697043752,
+      "eligible": false
+    }
+  },
+  "deep_analysis": {
+    "Aave V3": {
+      "scores": {
+        "tvl_solidity": 3,
+        "concentration": 4,
+        "health": 3,
+        "global": 3.33
+      },
+      "tvl_metrics": {
+        "current_usd": 9750782176.0,
+        "trend_30d_pct": -15.033841464215369,
+        "max_daily_drop_pct": -6.423279760551514,
+        "stability_ratio": 0.810778941824357
+      }
+    },
+    "Morpho": {
+      "scores": {
+        "tvl_solidity": 4,
+        "concentration": 4,
+        "health": 3,
+        "global": 3.67
+      },
+      "tvl_metrics": {
+        "current_usd": 3374998276.0,
+        "trend_30d_pct": -11.144806386769456,
+        "max_daily_drop_pct": -5.849537693300766,
+        "stability_ratio": 0.8543118940410577
+      }
+    }
+  }
+}

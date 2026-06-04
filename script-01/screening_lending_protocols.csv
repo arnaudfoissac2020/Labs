@@ -1,0 +1,6 @@
+protocol,name,category,tvl_total_usd,tvl_eth_usd,tvl_change_30d_pct,tvl_stability_ratio,annual_revenue_usd,audit_links,description,eligible
+Aave V3,Aave V3,Lending,12065359253.0,9750782176.0,-15.033841464215369,0.810778941824357,0,2,"Earn interest, borrow assets, and build applications",True
+Spark,Spark,N/A,4802020471.45153,4600468978.72951,-10.013837547412551,0.8456522236597981,0,[],Spark is an onchain capital allocator that borrows from Sky’s $6.5B+ stablecoin reserves to deploy c,True
+Morpho,Morpho,N/A,6530522206.0,3374998276.0,-11.144806386769456,0.8543118940410577,0,[],Morpho is a permissionless decentralized lending platform that operates on two levels: it offers tai,True
+Compound III,Compound V3,Lending,1065683588.0,959273616.0,-18.47336390733414,0.8152663609266586,0,2,"Compound is an algorithmic, autonomous interest rate protocol built for developers, to unlock a univ",True
+Euler V2,Euler V2,Lending,259279495.0,125415761.0,-63.07087697043752,0.3611729361851402,0,2,Euler revolutionizes DeFi by letting any asset become collateral for a lending market. Lenders and b,False
