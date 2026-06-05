@@ -123,7 +123,7 @@ ANNOTATIONS = {
 
 function isHealthy(
     MarketParams memory marketParams,
-    Market memory m,
+    Id id,
     address borrower
 ) internal view returns (bool) {
 
@@ -145,7 +145,7 @@ function isHealthy(
     // Calcul du montant de dette accumulée (capital + intérêts composés)
     // Les intérêts s'accumulent à chaque bloc via le mécanisme de shares
     uint256 borrowed = uint256(position[id(marketParams)][borrower].borrowShares)
-        .toAssetsUp(m.totalBorrowAssets, m.totalBorrowShares);
+        .toAssetsUp(market[id].totalBorrowAssets, market[id].totalBorrowShares);
 
     // Calcul de la capacité d'emprunt maximale :
     // maxBorrow = (quantité de collatéral × prix oracle) × LLTV
@@ -166,12 +166,12 @@ function isHealthy(
 }
 """,
     "analyse": """
-ANALYSE RISK MANAGER — Extrait 1 (isHealthy)
+ANALYSE — Extrait 1 (isHealthy)
 
 Ce que fait cette fonction : elle détermine si une position est liquidatable.
 Appelée lors de toute tentative de liquidation et lors des emprunts.
 
-Point critique pour un prêteur institutionnel :
+Point critique pour un prêteur/emprunteur institutionnel :
   → Si l'oracle retourne un prix anormalement bas (manipulation ou bug),
     des positions saines seront liquidées → perte de collatéral pour l'emprunteur
   → Si l'oracle ne met pas à jour son prix (staleness > heartbeat),
@@ -294,7 +294,7 @@ Risque résiduel :
 //           LLTV = 62% → LIF = 1.150 (plafonné à maxLIF)
 //
 // ⚠️ IMPLICATION RISK MANAGER :
-// Plus le LLTV est ÉLEVÉ (marché "sûr"), plus le LIF est FAIBLE.
+// Plus le Loan To Value Limit (LLTV) est ÉLEVÉ (marché "sûr"), plus le LIF est FAIBLE.
 // Avec un LIF de 1.047 sur un marché à LLTV=86%, un gap de prix
 // de plus de 4.7% entre deux blocs peut générer de la bad debt
 // car la récompense n'est plus suffisante pour inciter les liquidateurs.
@@ -389,7 +389,6 @@ Points clés pour un prêteur institutionnel :
 Actions préventives recommandées pour un prêteur :
   - Surveiller la volatilité intraday du collatéral (wstETH, WBTC)
   - Préférer les marchés à LLTV modéré (77-86%) vs très élevé (94-96%)
-    pour un premier accès institutionnel
   - Intégrer la bad debt dans le calcul VaR via Expected Credit Loss (IFRS 9)
 """
 },
@@ -404,7 +403,7 @@ Actions préventives recommandées pour un prêteur :
     "code": """
 // ═══════════════════════════════════════════════════════════
 // EXTRAIT 4 : Structure des paramètres immuables d'un marché
-// Source : Morpho Blue, interfaces/IMorpho.sol
+// Source : Morpho Blue, interfaces/IMorpho.sol, MarketParamsLib.sol
 // ═══════════════════════════════════════════════════════════
 
 // Structure définissant les 5 paramètres immuables d'un marché Morpho Blue
@@ -425,7 +424,7 @@ struct MarketParams {
 // de ses paramètres immuables — garantissant que deux marchés
 // aux paramètres identiques partagent le même ID.
 function id(MarketParams memory marketParams) returns (Id) {
-    return Id.wrap(keccak256(abi.encode(marketParams)));
+    return Id.wrap(keccak256(marketParams));
     //             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     //             Hash cryptographique — tout changement de paramètre
     //             produirait un ID différent → marché différent
@@ -543,11 +542,9 @@ VECTEUR D'ATTAQUE (⚠️) :
 
 IMPLICATION POUR LA DUE DILIGENCE :
   → Systématiquement vérifier que l'oracle de tout marché cible
-    est un oracle TWAP ou multi-sources (Chainlink), pas un oracle
+    est un oracle TWAP (average over time) ou multi-sources (Chainlink), pas un oracle
     spot basé sur une pool AMM (Uniswap TWAP court terme accepté,
     spot rejeté)
-  → Les marchés Morpho opérés par SG Forge utilisent des oracles
-    Chainlink — ce qui les rend résistants à ce vecteur d'attaque
 """
 },
 }
