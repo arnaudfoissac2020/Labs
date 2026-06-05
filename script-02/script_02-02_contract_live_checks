@@ -8,7 +8,7 @@ load_dotenv()
 
 # ─── CONFIGURATION ────────────────────────────────────────────────────────────
 
-RPC_URL = os.getenv("RPC_URL", "https://eth.llamarpc.com")
+RPC_URL = os.getenv("RPC_URL")
 MORPHO_BLUE_ADDRESS = "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb"
 
 # ABI minimal pour les vérifications on-chain
@@ -90,6 +90,12 @@ MARCHES_REFERENCE = {
         "id": "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49",
         "loan": "USDC",
         "collateral": "WBTC",
+        "lltv_attendu": 0.86,
+    },
+    "cbBTC/EURCV (LLTV=0.86%)": {
+        "id": "0xb5f8d5554d85b782d7080314bba3544983755a75eb5c432f5eae1c47c6af4da4",
+        "loan": "EURCV",
+        "collateral": "cbBTC",
         "lltv_attendu": 0.86,
     },
 }

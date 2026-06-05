@@ -1,0 +1,39 @@
+{
+  "protocole": "Morpho Blue",
+  "adresse": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+  "date_analyse": "2026-06-05T16:21:30.027016",
+  "score_securite": "4/4 \u2014 FORT",
+  "verdict": "\u00c9LIGIBLE \u2014 propri\u00e9t\u00e9s de s\u00e9curit\u00e9 smart contract confirm\u00e9es",
+  "verifications_onchain": {
+    "contrat_deploye": true,
+    "USDC/wstETH (LLTV=86%)": {
+      "oracle": "0x48F7E36EB6B826B2dF4B2E630B62Cd25e89E40e2",
+      "irm_valide": true,
+      "lltv_pct": 86.0,
+      "utilisation": 90.1409891913167
+    },
+    "USDC/WBTC (LLTV=86%)": {
+      "oracle": "0xDddd770BADd886dF3864029e4B377B5F6a2B6b83",
+      "irm_valide": true,
+      "lltv_pct": 86.0,
+      "utilisation": 90.49106495839715
+    },
+    "cbBTC/EURCV (LLTV=0.86%)": {
+      "oracle": "0xD08d519D6e91575C4e7AE1e49bd54da369521c0e",
+      "irm_valide": true,
+      "lltv_pct": 86.0,
+      "utilisation": 88.37967375895307
+    }
+  },
+  "vecteurs_risque_residuels": [
+    "Oracle risk (PRINCIPAL) \u2014 cf. Extrait 1 et 5",
+    "Bad debt risk pour les pr\u00eateurs \u2014 cf. Extrait 3",
+    "Callback risk (LIMIT\u00c9) \u2014 cf. Extrait 2"
+  ],
+  "audits_references": [
+    "Spearbit \u2014 Morpho Blue core (2023-2024)",
+    "Trail of Bits \u2014 Morpho Blue core (2023)",
+    "Cantina \u2014 AdaptiveCurveIRM (2024)",
+    "Certora \u2014 V\u00e9rification formelle (2024)"
+  ]
+}
