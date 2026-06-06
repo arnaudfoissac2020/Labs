@@ -693,7 +693,7 @@ if __name__ == "__main__":
 
     trades = extraire_trades_morpho(
         adresse_wallet=TRADING_WALLET,
-        nb_blocs=10_000,    # ~33 heures de blocs
+        nb_blocs =10_000,    # ~33 heures de blocs
         types_evenements=["Supply", "Withdraw", "Borrow", "Repay"],
     )
 
@@ -704,7 +704,7 @@ if __name__ == "__main__":
     # Remplacer par un tx hash réel en production
     TX_DEMO = os.getenv(
         "TX_HASH_DEMO",
-        "0x0000000000000000000000000000000000000000000000000000000000000000"
+        "0xa4062ecc827e46966b85886c258ad7fc8f22ca2bd52832797af2249090326bc4"
     )
 
     if TX_DEMO != "0x" + "0"*64:
