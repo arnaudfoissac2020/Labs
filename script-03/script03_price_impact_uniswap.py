@@ -310,8 +310,6 @@ def simuler_swap(
     # Toujours positif : l'exécution est toujours moins favorable que le spot
     price_impact_pct = (spot_price - prix_execution) / spot_price * 100
 
-    price_impact_bis = (prix_execution - sqrt_after)/ prix_execution *100
-
     # Prix théorique sans aucun impact (spot pur)
     montant_out_theorique = montant_humain * spot_price
 
