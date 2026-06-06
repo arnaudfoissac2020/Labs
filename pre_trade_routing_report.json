@@ -1,0 +1,28 @@
+[
+  {
+    "paire": "USDT/USDC",
+    "montant": 5000000,
+    "timestamp": "2026-06-06T10:22:05.320690",
+    "resultats": {
+      "100": {
+        "fee_tier": 100,
+        "fee_label": "0.01%  \u2014 stablecoins corr\u00e9l\u00e9s (ex. USDC/USDT)",
+        "pool_address": "0x3416cF6C708Da44DB2624D63ea0AAef7113527C6",
+        "amount_in": 5000000,
+        "amount_out": 4998324.229616,
+        "montant_out_theorique": 4999359.13476412,
+        "spot_price": 0.9998718269528241,
+        "prix_execution": 0.9996648459232,
+        "price_impact_pct": 0.020701,
+        "perte_price_impact": 1034.9051,
+        "frais_pool": 499.8324,
+        "cout_total_pct": 0.030701,
+        "ticks_traverses": 2,
+        "gas_estimate": 154846
+      }
+    },
+    "meilleur_pool": 100,
+    "recommandation": "EX\u00c9CUTER pool 0.01% \u2014 co\u00fbt total 0.0307%",
+    "slippage_config": 0.05
+  }
+]
