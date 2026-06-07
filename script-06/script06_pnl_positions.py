@@ -41,11 +41,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-RPC_URL   = os.getenv("RPC_URL", "https://eth.llamarpc.com")
-GRAPH_URL = os.getenv(
-    "MORPHO_SUBGRAPH_URL",
-    "https://api.thegraph.com/subgraphs/name/morpho-association/morpho-blue"
-)
+RPC_URL   = os.getenv("RPC_ETHEREUM_PUBLIC", "https://eth.llamarpc.com")
 w3 = Web3(Web3.HTTPProvider(RPC_URL))
 
 # ─── ADRESSES ─────────────────────────────────────────────────────────────────
@@ -57,6 +53,8 @@ CHAINLINK_USDC_USD  = "0x8fFfFfd4AfB6115b954Bd326cbe7B4BA576818f6"
 # ─── RÉFÉRENTIEL TOKENS ────────────────────────────────────────────────────────
 
 TOKEN_INFO = {
+    "0x5F7827FDeb7c20b443265Fc2F40845B715385Ff2": {"symbol": "EURCV",   "decimals": 18},
+    "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf": {"symbol": "cbBTC",   "decimals": 8},
     "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48": {"symbol": "USDC",   "decimals": 6},
     "0xdAC17F958D2ee523a2206206994597C13D831ec7": {"symbol": "USDT",   "decimals": 6},
     "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2": {"symbol": "WETH",   "decimals": 18},
@@ -134,6 +132,7 @@ MORPHO_EVENTS_ABI = [
     {
         "name": "Supply",
         "type": "event",
+        "anonymous": False,
         "inputs": [
             {"name": "id",       "type": "bytes32", "indexed": True},
             {"name": "caller",   "type": "address", "indexed": False},
@@ -145,6 +144,7 @@ MORPHO_EVENTS_ABI = [
     {
         "name": "Borrow",
         "type": "event",
+        "anonymous": False,
         "inputs": [
             {"name": "id",       "type": "bytes32", "indexed": True},
             {"name": "caller",   "type": "address", "indexed": False},
@@ -192,7 +192,7 @@ def get_bloc_par_timestamp(timestamp_utc: datetime) -> int:
     return bloc_estime
 
 
-def get_eth_price_usd() -> float | None:
+def get_eth_price_usd() -> float :
     """Lit le prix ETH/USD depuis Chainlink."""
     try:
         feed = w3.eth.contract(
@@ -201,8 +201,8 @@ def get_eth_price_usd() -> float | None:
         )
         data = feed.functions.latestRoundData().call()
         return data[1] / 1e8
-    except Exception:
-        return None
+    except Exception as ex:
+        raise Exception ("Error getting spot price eth/USD", ex)
 
 
 def get_usdc_price_usd() -> float:
@@ -218,7 +218,7 @@ def get_usdc_price_usd() -> float:
         return 1.0  # Fallback : 1 USDC = 1 USD
 
 
-def lire_etat_marche(morpho, market_id_bytes: bytes, bloc: int) -> dict | None:
+def lire_etat_marche(morpho, market_id_bytes: bytes, bloc: int) -> dict:
     """
     Lit l'état d'un marché Morpho Blue à un bloc historique spécifique.
 
@@ -246,12 +246,12 @@ def lire_etat_marche(morpho, market_id_bytes: bytes, bloc: int) -> dict | None:
             "fee":                 data[5],
         }
     except Exception as e:
-        return None
+        raise Exception ("Error getting market state", e)
 
 
 def lire_position_wallet(
     morpho, market_id_bytes: bytes, wallet: str, bloc: int
-) -> dict | None:
+) -> dict :
     """
     Lit les positions (supply shares, borrow shares, collateral) d'un wallet
     dans un marché Morpho Blue à un bloc historique spécifique.
@@ -267,7 +267,7 @@ def lire_position_wallet(
             "collateral":    data[2],
         }
     except Exception as e:
-        return None
+        raise Exception ("Error getting wallet position", e)
 
 
 def shares_to_assets(shares: int, total_assets: int, total_shares: int) -> float:
@@ -295,7 +295,7 @@ def calculer_gas_fees_periode(
     market_id_hex: str,
     bloc_debut: int,
     bloc_fin: int,
-    eth_price: float | None,
+    eth_price: float ,
 ) -> dict:
     """
     Agrège les gas fees payées par un wallet pour ses opérations Morpho
@@ -322,13 +322,11 @@ def calculer_gas_fees_periode(
     # Parcourir les événements Supply et Borrow (les plus fréquents)
     for event_name in ["Supply", "Borrow"]:
         try:
-            event_filter = morpho.events[event_name].create_filter(
+            evenements = morpho.events[event_name].get_logs(
                 from_block=bloc_debut,
                 to_block=bloc_fin,
                 argument_filters={"onBehalf": wallet_cs}
             )
-            evenements = event_filter.get_all_entries()
-
             for evt in evenements:
                 tx_hash = evt["transactionHash"].hex()
                 if tx_hash in tx_vues:
@@ -342,10 +340,12 @@ def calculer_gas_fees_periode(
                     )
                     gas_total_wei += gas_wei
                     nb_tx += 1
-                except Exception:
+                except Exception as e1:
+                    print("Exception while parsing events", e1)
                     continue
 
-        except Exception:
+        except Exception as e2 :
+            print("Exception while parsing events", e2)
             continue
 
     gas_total_eth = gas_total_wei / 1e18
@@ -365,7 +365,7 @@ def calculer_gas_fees_periode(
 def calculer_pnl_position(
     wallet: str,
     market_id_hex: str,
-    date_pnl: datetime | None = None,
+    date_pnl: datetime ,
     inclure_gas: bool = True,
 ) -> dict:
     """
@@ -456,36 +456,32 @@ def calculer_pnl_position(
     # ── Calcul de l'accrual des intérêts ──────────────────────────────────────
     #
     # SUPPLY (prêteur) — intérêts perçus
-    # assets(t) = supplyShares × totalSupplyAssets / totalSupplyShares
+    # Isoler l'effet ratio (intérêts) de l'effet shares (dépôts/retraits).
+    # interets = shares_t0 × (ratio_t1 - ratio_t0)
+    # flux_capital = (shares_t1 - shares_t0) × ratio_t1
     #
-    supply_assets_t0 = shares_to_assets(
-        pos_t0["supply_shares"],
-        etat_t0["total_supply_assets"],
-        etat_t0["total_supply_shares"]
-    )
-    supply_assets_t1 = shares_to_assets(
-        pos_t1["supply_shares"],
-        etat_t1["total_supply_assets"],
-        etat_t1["total_supply_shares"]
-    )
-    interets_supply_raw = supply_assets_t1 - supply_assets_t0
+    ratio_supply_t0 = (etat_t0["total_supply_assets"] / etat_t0["total_supply_shares"]
+                       if etat_t0["total_supply_shares"] > 0 else 0)
+    ratio_supply_t1 = (etat_t1["total_supply_assets"] / etat_t1["total_supply_shares"]
+                       if etat_t1["total_supply_shares"] > 0 else 0)
+    interets_supply_raw = pos_t0["supply_shares"] * (ratio_supply_t1 - ratio_supply_t0)
     interets_supply = interets_supply_raw / (10**loan_decimals)
+    flux_supply_raw = (pos_t1["supply_shares"] - pos_t0["supply_shares"]) * ratio_supply_t1
+    flux_supply = flux_supply_raw / (10**loan_decimals)
 
     # BORROW (emprunteur) — intérêts payés
-    # assets(t) = borrowShares × totalBorrowAssets / totalBorrowShares
+    # Même décomposition : effet ratio (intérêts) vs effet shares (emprunts/remboursements).
+    # interets = shares_t0 × (ratio_t1 - ratio_t0)
+    # flux_capital = (shares_t1 - shares_t0) × ratio_t1
     #
-    borrow_assets_t0 = shares_to_assets(
-        pos_t0["borrow_shares"],
-        etat_t0["total_borrow_assets"],
-        etat_t0["total_borrow_shares"]
-    )
-    borrow_assets_t1 = shares_to_assets(
-        pos_t1["borrow_shares"],
-        etat_t1["total_borrow_assets"],
-        etat_t1["total_borrow_shares"]
-    )
-    interets_borrow_raw = borrow_assets_t1 - borrow_assets_t0
+    ratio_borrow_t0 = (etat_t0["total_borrow_assets"] / etat_t0["total_borrow_shares"]
+                       if etat_t0["total_borrow_shares"] > 0 else 0)
+    ratio_borrow_t1 = (etat_t1["total_borrow_assets"] / etat_t1["total_borrow_shares"]
+                       if etat_t1["total_borrow_shares"] > 0 else 0)
+    interets_borrow_raw = pos_t0["borrow_shares"] * (ratio_borrow_t1 - ratio_borrow_t0)
     interets_borrow = interets_borrow_raw / (10**loan_decimals)  # charge (positif = payé)
+    flux_borrow_raw = (pos_t1["borrow_shares"] - pos_t0["borrow_shares"]) * ratio_borrow_t1
+    flux_borrow = flux_borrow_raw / (10**loan_decimals)
 
     # ── Calcul du Supply APY effectif sur la période ───────────────────────────
     # APY journalier estimé depuis la variation du ratio totalAssets/totalShares
@@ -530,10 +526,10 @@ def calculer_pnl_position(
         pnl_net_usd = interets_supply_usd - gas_data["gas_total_usd"]
 
     # ── Affichage ─────────────────────────────────────────────────────────────
-    supply_t0_h = supply_assets_t0 / (10**loan_decimals)
-    supply_t1_h = supply_assets_t1 / (10**loan_decimals)
-    borrow_t0_h = borrow_assets_t0 / (10**loan_decimals)
-    borrow_t1_h = borrow_assets_t1 / (10**loan_decimals)
+    supply_t0_h = pos_t0["supply_shares"] * ratio_supply_t0 / (10**loan_decimals)
+    supply_t1_h = pos_t1["supply_shares"] * ratio_supply_t1 / (10**loan_decimals)
+    borrow_t0_h = pos_t0["borrow_shares"] * ratio_borrow_t0 / (10**loan_decimals)
+    borrow_t1_h = pos_t1["borrow_shares"] * ratio_borrow_t1 / (10**loan_decimals)
 
     print(f"\n  POSITION PRÊTEUR (Supply) :")
     print(f"    Actifs t₀       : {supply_t0_h:>15,.6f} {loan_symbol}")
@@ -543,6 +539,8 @@ def calculer_pnl_position(
         print(f"  (${interets_supply_usd:,.4f} USD)")
     else:
         print()
+    if flux_supply != 0:
+        print(f"    Flux capital    : {flux_supply:>+15,.6f} {loan_symbol}  (dépôt/retrait)")
     print(f"    Supply APY eff. : {apy_annualise:>14.4f} %")
 
     if borrow_t1_h > 0:
@@ -550,6 +548,8 @@ def calculer_pnl_position(
         print(f"    Dette t₀        : {borrow_t0_h:>15,.6f} {loan_symbol}")
         print(f"    Dette t₁        : {borrow_t1_h:>15,.6f} {loan_symbol}")
         print(f"    Intérêts payés  : {interets_borrow:>15,.6f} {loan_symbol}")
+        if flux_borrow != 0:
+            print(f"    Flux capital    : {flux_borrow:>+15,.6f} {loan_symbol}  (emprunt/remboursement)")
         print(f"    Collatéral t₁   : {collateral_t1:>15,.6f} {coll_symbol}")
 
     print(f"\n  COÛTS OPÉRATIONNELS :")
@@ -648,7 +648,7 @@ def calculer_pnl_position(
 def calculer_pnl_portefeuille(
     wallet: str,
     marches: list[str],
-    date_pnl: datetime | None = None,
+    date_pnl: datetime ,
 ) -> dict:
     """
     Calcule le P&L quotidien consolidé pour un portefeuille de positions
@@ -737,17 +737,19 @@ if __name__ == "__main__":
 
     # ── Portefeuille institutionnel de démonstration ───────────────────────────
     # Remplacer par les adresses réelles en production
+    #WALLET_INSTITUTION = os.getenv(
+    #   "WALLET_INSTITUTION",
+    #    "0x5130985cE6A0e54f369712Cd6f2fDEC084026E54"
+    #)
+
     WALLET_INSTITUTION = os.getenv(
         "WALLET_INSTITUTION",
-        "0x4e9d257FfEce3C9fAb9D8D5e4e6e14C98E6b6b6b"
     )
 
-    # Marchés Morpho Blue de démonstration
+
     MARCHES_PORTEFEUILLE = [
-        # USDC/wstETH (LLTV 86%) — marché principal
-        "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
-        # USDC/WBTC (LLTV 86%)
-        "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49",
+        # EURCV/cbBTC (LLTV 86%) — marché principal
+        "0xb5f8d5554d85b782d7080314bba3544983755a75eb5c432f5eae1c47c6af4da4",
     ]
 
     # Calcul du P&L pour aujourd'hui
