@@ -212,6 +212,7 @@ def normaliser_evenement(
         collateral_token  = market_params["collateral_token"]
         lltv_pct          = market_params["lltv_pct"]
         oracle            = market_params["oracle"]
+        irm               = market_params["irm"]
     else:
         loan_symbol = collateral_symbol = "UNKNOWN"
         loan_token  = collateral_token  = ""
@@ -287,7 +288,7 @@ def normaliser_evenement(
         "collateral_address":  collateral_token,
         "lltv_pct":            lltv_pct,
         "oracle_address":      oracle,
-        "irm":                 "AdaptiveCurveIRM",
+        "irm":                 irm,
 
         # ── MONTANT ET SENS ───────────────────────────────────────────────────
         "sens":              sens,
@@ -303,6 +304,7 @@ def normaliser_evenement(
         # Le taux Morpho est variable, calculé à chaque bloc via l'IRM
         # Il doit être recalculé quotidiennement pour l'accrual (cf. Script 6)
         "taux_type":  "VARIABLE",
+        "taux_index": irm,
         "taux_note":  ("Taux Morpho Adaptive Curve IRM — variable à chaque bloc. "
                        "Recalcul quotidien requis pour l'accrual (cf. Script 6)."),
 
