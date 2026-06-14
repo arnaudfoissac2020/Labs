@@ -41,7 +41,7 @@ Sources :
     https://www.fsb.org/2023/02/the-financial-stability-risks-of-decentralised-finance/
 """
 
-import os
+import os, sys
 import json
 import csv
 from datetime import datetime, timezone
@@ -92,51 +92,8 @@ SEUIL_ABSOLU_CRITIQUE = {
 }
 
 # ─── ABIs ─────────────────────────────────────────────────────────────────────
-
-MORPHO_ABI = [
-    {
-        "name": "market",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [{"name": "id", "type": "bytes32"}],
-        "outputs": [
-            {"name": "totalSupplyAssets", "type": "uint128"},
-            {"name": "totalSupplyShares", "type": "uint128"},
-            {"name": "totalBorrowAssets", "type": "uint128"},
-            {"name": "totalBorrowShares", "type": "uint128"},
-            {"name": "lastUpdate",        "type": "uint128"},
-            {"name": "fee",               "type": "uint128"},
-        ]
-    },
-    {
-        "name": "position",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs": [
-            {"name": "id",   "type": "bytes32"},
-            {"name": "user", "type": "address"},
-        ],
-        "outputs": [
-            {"name": "supplyShares", "type": "uint256"},
-            {"name": "borrowShares", "type": "uint128"},
-            {"name": "collateral",   "type": "uint128"},
-        ]
-    },
-    {
-        "name": "idToMarketParams",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [{"name": "id", "type": "bytes32"}],
-        "outputs": [
-            {"name": "loanToken",       "type": "address"},
-            {"name": "collateralToken", "type": "address"},
-            {"name": "oracle",          "type": "address"},
-            {"name": "irm",             "type": "address"},
-            {"name": "lltv",            "type": "uint256"},
-        ]
-    },
-]
-
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from shared.morpho_abis import MORPHO_ABI
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # FONCTIONS UTILITAIRES

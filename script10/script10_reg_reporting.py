@@ -51,7 +51,7 @@ Sources :
     https://www.calibraint.com/blog/defi-regulatory-compliance-sec-cftc-2025
 """
 
-import os
+import os, sys
 import csv
 import json
 import xml.etree.ElementTree as ET
@@ -123,72 +123,8 @@ TOKEN_INFO = {
 }
 
 # ─── ABIs ─────────────────────────────────────────────────────────────────────
-
-MORPHO_EVENTS_ABI = [
-    {
-        "name": "Supply",
-        "type": "event",
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-    {
-        "name": "Borrow",
-        "type": "event",
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "receiver", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-    {
-        "name": "Withdraw",
-        "type": "event",
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "receiver", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-    {
-        "name": "Repay",
-        "type": "event",
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-]
-
-MORPHO_PARAMS_ABI = [
-    {
-        "name": "idToMarketParams",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [{"name": "id", "type": "bytes32"}],
-        "outputs": [
-            {"name": "loanToken",       "type": "address"},
-            {"name": "collateralToken", "type": "address"},
-            {"name": "oracle",          "type": "address"},
-            {"name": "irm",             "type": "address"},
-            {"name": "lltv",            "type": "uint256"},
-        ]
-    }
-]
-
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from shared.morpho_abis import MORPHO_EVENTS_ABI, MORPHO_PARAMS_ABI
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # QUALIFICATION RÉGLEMENTAIRE

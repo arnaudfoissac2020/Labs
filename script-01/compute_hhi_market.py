@@ -32,7 +32,7 @@ DIFFÉRENCE AVEC blue-api.morpho.org :
 Dépendances : pip install requests web3 python-dotenv
 """
 
-import os, json, requests
+import os, json, requests, sys
 from datetime import datetime, timezone
 from web3 import Web3
 from dotenv import load_dotenv
@@ -297,72 +297,8 @@ def lire_toutes_positions(market_id: str) -> list[dict]:
 # FALLBACK ON-CHAIN (Web3.py + Multicall3)
 # ═══════════════════════════════════════════════════════════════════════════════
 
-MORPHO_ABI = [
-    {
-        "name": "position",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs": [
-            {"name": "id",   "type": "bytes32"},
-            {"name": "user", "type": "address"},
-        ],
-        "outputs": [
-            {"name": "supplyShares", "type": "uint256"},
-            {"name": "borrowShares", "type": "uint128"},
-            {"name": "collateral",   "type": "uint128"},
-        ]
-    },
-    {
-        "name": "market",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [{"name": "id", "type": "bytes32"}],
-        "outputs": [
-            {"name": "totalSupplyAssets", "type": "uint128"},
-            {"name": "totalSupplyShares", "type": "uint128"},
-            {"name": "totalBorrowAssets", "type": "uint128"},
-            {"name": "totalBorrowShares", "type": "uint128"},
-            {"name": "lastUpdate",        "type": "uint128"},
-            {"name": "fee",               "type": "uint128"},
-        ]
-    },
-]
-
-SUPPLY_EVENTS_ABI = [
-    {
-        "name": "Supply",
-        "type": "event",
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-    {
-        "name": "Withdraw",
-        "type": "event",
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "receiver", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-]
-
-MULTICALL3_ABI = [
-    {
-        "name": "aggregate",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs": [
-            {
-                "name": "calls",
-                "type": "tuple[]",
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from shared.morpho_abis import MORPHO_ABI, MORPHO_EVENTS_ABI, MULTICALL3_ABI",
                 "components": [
                     {"name": "target",   "type": "address"},
                     {"name": "callData", "type": "bytes"},
@@ -402,7 +338,7 @@ def fallback_onchain(market_id: str) -> dict :
     market_bytes   = bytes.fromhex(market_id[2:])
     morpho         = w3.eth.contract(
         address=Web3.to_checksum_address(MORPHO_ADDRESS),
-        abi=MORPHO_ABI + SUPPLY_EVENTS_ABI
+        abi=MORPHO_ABI + MORPHO_EVENTS_ABI
     )
 
     print(f"  ✅ RPC connecté — Bloc #{bloc_actuel:,}")

@@ -38,7 +38,7 @@ Sources :
   - FSB, The Financial Stability Risks of DeFi, 2023
 """
 
-import os
+import os, sys
 import json
 import hashlib
 from datetime import datetime, timezone
@@ -67,6 +67,8 @@ TOKEN_REGISTRY = {
     "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599": {"symbol": "WBTC",   "decimals": 8},
     "0xae78736Cd615f374D3085123A210448E74Fc6393": {"symbol": "rETH",   "decimals": 18},
     "0xBe9895146f7AF43049ca1c1AE358B0541Ea49704": {"symbol": "cbETH",  "decimals": 18},
+    "0x5F7827FDeb7c20b443265Fc2F40845B715385Ff2": {"symbol": "EURCV",   "decimals": 18},
+    "0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf": {"symbol": "cbBTC",   "decimals": 8},
 }
 
 # Convention interne : adresse Morpho Blue → LEI fictif
@@ -76,121 +78,8 @@ MORPHO_INTERNAL_LEI_NOTE = ("Pas de LEI réel — smart contract sans entité ju
                              "Convention interne requise — cf. Section IV.2 du mémoire.")
 
 # ─── ABIs ─────────────────────────────────────────────────────────────────────
-
-MORPHO_EVENTS_ABI = [
-    # Supply — dépôt d'actifs de prêt
-    {
-        "name": "Supply",
-        "type": "event",
-        "anonymous": False,
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-    # Withdraw — retrait d'actifs de prêt
-    {
-        "name": "Withdraw",
-        "type": "event",
-        "anonymous": False,
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "receiver", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-    # Borrow — emprunt d'actifs contre collatéral
-    {
-        "name": "Borrow",
-        "type": "event",
-        "anonymous": False,
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "receiver", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-    # Repay — remboursement de la dette
-    {
-        "name": "Repay",
-        "type": "event",
-        "anonymous": False,
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-            {"name": "shares",   "type": "uint256", "indexed": False},
-        ]
-    },
-    # SupplyCollateral — dépôt de collatéral
-    {
-        "name": "SupplyCollateral",
-        "type": "event",
-        "anonymous": False,
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-        ]
-    },
-    # WithdrawCollateral — retrait de collatéral
-    {
-        "name": "WithdrawCollateral",
-        "type": "event",
-        "anonymous": False,
-        "inputs": [
-            {"name": "id",       "type": "bytes32", "indexed": True},
-            {"name": "caller",   "type": "address", "indexed": False},
-            {"name": "onBehalf", "type": "address", "indexed": True},
-            {"name": "receiver", "type": "address", "indexed": True},
-            {"name": "assets",   "type": "uint256", "indexed": False},
-        ]
-    },
-]
-
-MORPHO_PARAMS_ABI = [
-    {
-        "name": "idToMarketParams",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [{"name": "id", "type": "bytes32"}],
-        "outputs": [
-            {"name": "loanToken",       "type": "address"},
-            {"name": "collateralToken", "type": "address"},
-            {"name": "oracle",          "type": "address"},
-            {"name": "irm",             "type": "address"},
-            {"name": "lltv",            "type": "uint256"},
-        ]
-    }
-]
-
-CHAINLINK_ABI = [
-    {
-        "name": "latestRoundData",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs": [],
-        "outputs": [
-            {"name": "roundId",         "type": "uint80"},
-            {"name": "answer",          "type": "int256"},
-            {"name": "startedAt",       "type": "uint256"},
-            {"name": "updatedAt",       "type": "uint256"},
-            {"name": "answeredInRound", "type": "uint80"},
-        ]
-    }
-]
-
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from shared.morpho_abis import MORPHO_EVENTS_ABI, MORPHO_PARAMS_ABI, CHAINLINK_ABI
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # FONCTIONS UTILITAIRES

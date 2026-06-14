@@ -44,7 +44,7 @@ Sources :
     https://www.bis.org/publ/qtrpdf/r_qt2112b.htm
 """
 
-import os
+import os, sys
 import json
 import time
 from datetime import datetime, timezone
@@ -121,116 +121,8 @@ class Severite(Enum):
     CRITIQUE  = "🚨 CRITIQUE"
 
 # ─── ABIs ─────────────────────────────────────────────────────────────────────
-
-MORPHO_ABI = [
-    {
-        "name": "market",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [{"name": "id", "type": "bytes32"}],
-        "outputs": [
-            {"name": "totalSupplyAssets", "type": "uint128"},
-            {"name": "totalSupplyShares", "type": "uint128"},
-            {"name": "totalBorrowAssets", "type": "uint128"},
-            {"name": "totalBorrowShares", "type": "uint128"},
-            {"name": "lastUpdate",        "type": "uint128"},
-            {"name": "fee",               "type": "uint128"},
-        ]
-    },
-    {
-        "name": "position",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs": [
-            {"name": "id",   "type": "bytes32"},
-            {"name": "user", "type": "address"},
-        ],
-        "outputs": [
-            {"name": "supplyShares", "type": "uint256"},
-            {"name": "borrowShares", "type": "uint128"},
-            {"name": "collateral",   "type": "uint128"},
-        ]
-    },
-    {
-        "name": "idToMarketParams",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [{"name": "id", "type": "bytes32"}],
-        "outputs": [
-            {"name": "loanToken",       "type": "address"},
-            {"name": "collateralToken", "type": "address"},
-            {"name": "oracle",          "type": "address"},
-            {"name": "irm",             "type": "address"},
-            {"name": "lltv",            "type": "uint256"},
-        ]
-    },
-]
-
-MORPHO_ORACLE_ABI = [
-    {
-        "name": "price",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [],
-        "outputs": [{"name": "", "type": "uint256"}]
-    }
-]
-
-MORPHO_GOV_EVENTS_ABI = [
-    {
-        "name": "EnableIrm",
-        "type": "event",
-        "inputs": [
-            {"name": "irm", "type": "address", "indexed": True}
-        ]
-    },
-    {
-        "name": "EnableLltv",
-        "type": "event",
-        "inputs": [
-            {"name": "lltv", "type": "uint256", "indexed": False}
-        ]
-    },
-    {
-        "name": "SetFee",
-        "type": "event",
-        "inputs": [
-            {"name": "id",     "type": "bytes32", "indexed": True},
-            {"name": "newFee", "type": "uint256", "indexed": False},
-        ]
-    },
-    {
-        "name": "Liquidate",
-        "type": "event",
-        "inputs": [
-            {"name": "id",           "type": "bytes32", "indexed": True},
-            {"name": "caller",       "type": "address", "indexed": False},
-            {"name": "borrower",     "type": "address", "indexed": True},
-            {"name": "repaidAssets", "type": "uint256", "indexed": False},
-            {"name": "repaidShares", "type": "uint256", "indexed": False},
-            {"name": "seizedAssets", "type": "uint256", "indexed": False},
-            {"name": "badDebtAssets","type": "uint256", "indexed": False},
-            {"name": "badDebtShares","type": "uint256", "indexed": False},
-        ]
-    },
-]
-
-CHAINLINK_ABI = [
-    {
-        "name": "latestRoundData",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs": [],
-        "outputs": [
-            {"name": "roundId",         "type": "uint80"},
-            {"name": "answer",          "type": "int256"},
-            {"name": "startedAt",       "type": "uint256"},
-            {"name": "updatedAt",       "type": "uint256"},
-            {"name": "answeredInRound", "type": "uint80"},
-        ]
-    }
-]
-
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from shared.morpho_abis import MORPHO_ABI, MORPHO_ORACLE_ABI, MORPHO_GOV_EVENTS_ABI, CHAINLINK_ABI
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONSTRUCTION D'UNE ALERTE

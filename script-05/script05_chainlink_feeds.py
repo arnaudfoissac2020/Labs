@@ -34,7 +34,7 @@ Sources :
   - Mackinga et al., TWAP Oracle Attacks, arXiv:2208.09903, 2022
 """
 
-import os
+import os, sys
 import json
 import time
 from datetime import datetime, timezone, timedelta
@@ -128,64 +128,8 @@ MORPHO_MARKETS = {
 }
 
 # ─── ABIs ─────────────────────────────────────────────────────────────────────
-
-CHAINLINK_ABI = [
-    {
-        "name": "latestRoundData",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs": [],
-        "outputs": [
-            {"name": "roundId",         "type": "uint80"},
-            {"name": "answer",          "type": "int256"},
-            {"name": "startedAt",       "type": "uint256"},
-            {"name": "updatedAt",       "type": "uint256"},
-            {"name": "answeredInRound", "type": "uint80"},
-        ]
-    },
-    {
-        "name": "description",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [],
-        "outputs": [{"name": "", "type": "string"}]
-    },
-    {
-        "name": "decimals",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [],
-        "outputs": [{"name": "", "type": "uint8"}]
-    },
-]
-
-# Interface IOracle de Morpho — expose price() directement
-MORPHO_ORACLE_ABI = [
-    {
-        "name": "price",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [],
-        "outputs": [{"name": "", "type": "uint256"}]
-    }
-]
-
-MORPHO_PARAMS_ABI = [
-    {
-        "name": "idToMarketParams",
-        "type": "function",
-        "stateMutability": "view",
-        "inputs":  [{"name": "id", "type": "bytes32"}],
-        "outputs": [
-            {"name": "loanToken",       "type": "address"},
-            {"name": "collateralToken", "type": "address"},
-            {"name": "oracle",          "type": "address"},
-            {"name": "irm",             "type": "address"},
-            {"name": "lltv",            "type": "uint256"},
-        ]
-    }
-]
-
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from shared.morpho_abis import CHAINLINK_ABI, MORPHO_ORACLE_ABI, MORPHO_PARAMS_ABI
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # LECTURE ET VÉRIFICATION DES PRICE FEEDS
