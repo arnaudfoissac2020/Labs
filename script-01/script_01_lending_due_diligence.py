@@ -54,7 +54,7 @@ PROTOCOLS_SCREENING = {
 }
 
 # Subgraphs The Graph pour l'analyse approfondie (Niveau 2)
-GRAPH_API_KEY = 'ad7be9979bdef2600a0e09a4ddc01d69'
+GRAPH_API_KEY = os.getenv("GRAPH_API_KEY")
 
 SUBGRAPHS = {
     "Aave V3": (
@@ -304,7 +304,8 @@ def get_thegraph_lending_markets(protocol_name: str, subgraph_url: str) -> pd.Da
 
         rows.append({
             "protocol": protocol_name,
-            "market": market["inputToken"]["symbol"],
+            #"market": market["inputToken"]["symbol"],
+            "market": market["name"],
             "tvl_usd": tvl,
             "tvl_share_pct": (tvl / total_tvl * 100) if total_tvl > 0 else 0,
             "deposits_usd": deposits,
