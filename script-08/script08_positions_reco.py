@@ -374,7 +374,7 @@ def reconcilier_interets(
     market_id_hex: str,
     interets_tms: float,
     loan_symbol: str,
-    bloc_reference: int | None = None,
+    bloc_reference: int ,
 ) -> dict:
     """
     Réconciliation Niveau 2 : comparaison de l'accrual d'intérêts calculé
@@ -502,7 +502,7 @@ def reconcilier_interets(
 def generer_rapport_reconciliation(
     wallet: str,
     positions_tms: list[dict],
-    interets_tms_par_marche: dict | None = None,
+    interets_tms_par_marche: dict ,
 ) -> dict:
     """
     Génère le rapport de réconciliation complet pour un wallet institutionnel.
