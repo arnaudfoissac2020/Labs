@@ -1,3 +1,7 @@
+
+import os
+from dotenv import load_dotenv
+
 # Canonical GraphQL query definitions for The Graph subgraphs.
 # Import from any script with:
 #   import sys, os
@@ -32,3 +36,17 @@ LENDING_MARKETS_QUERY = """
   }
 }
 """
+
+# Subgraphs The Graph pour l'analyse approfondie (Niveau 2)
+GRAPH_API_KEY = os.getenv("GRAPH_API_KEY")
+
+SUBGRAPHS = {
+    "Aave V3": (
+        f"https://gateway.thegraph.com/api/{GRAPH_API_KEY}/subgraphs/id/"
+        "JCNWRypm7FYwV8fx5HhzZPSFaMxgkPuw4TnR3Gpi81zk"
+    ),
+    "Morpho": (
+        f"https://gateway.thegraph.com/api/{GRAPH_API_KEY}/subgraphs/id/"
+        "8Lz789DP5VKLXumTMTgygjU2xtuzx8AhbaacgN5PYCAs"
+    ),
+}

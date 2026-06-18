@@ -40,6 +40,8 @@ from query_helper import fetch_defillama
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from shared.graphql_queries import LENDING_MARKETS_QUERY
+from shared.graphql_queries import SUBGRAPHS
+from shared.network_constants import PROTOCOL_ADDRESSES
 
 load_dotenv()
 
@@ -55,26 +57,6 @@ PROTOCOLS_SCREENING = {
     "Spark":        "spark",
     "Morpho":       "morpho",
     "Euler V2":     "euler-v2",
-}
-
-# Subgraphs The Graph pour l'analyse approfondie (Niveau 2)
-GRAPH_API_KEY = os.getenv("GRAPH_API_KEY")
-
-SUBGRAPHS = {
-    "Aave V3": (
-        f"https://gateway.thegraph.com/api/{GRAPH_API_KEY}/subgraphs/id/"
-        "JCNWRypm7FYwV8fx5HhzZPSFaMxgkPuw4TnR3Gpi81zk"
-    ),
-    "Morpho": (
-        f"https://gateway.thegraph.com/api/{GRAPH_API_KEY}/subgraphs/id/"
-        "8Lz789DP5VKLXumTMTgygjU2xtuzx8AhbaacgN5PYCAs"
-    ),
-}
-
-# Adresses des protocoles sur Ethereum (pour référence et vérification on-chain)
-PROTOCOL_ADDRESSES = {
-    "Aave V3":  "0x2f39d218133AFaB8F2B819B1066c7E434Ad94E9e",  # Pool Addresses Provider
-    "Morpho":   "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",  # Morpho Blue
 }
 
 # Seuils de qualification — Niveau 1 (screening institutionnel)
