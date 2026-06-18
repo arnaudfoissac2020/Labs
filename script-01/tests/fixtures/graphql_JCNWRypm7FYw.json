@@ -1,0 +1,1419 @@
+{
+  "markets": [
+    {
+      "id": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+      "name": "Aave Ethereum WETH",
+      "inputToken": {
+        "symbol": "WETH"
+      },
+      "totalValueLockedUSD": "3525531256.88005379274420405723698",
+      "totalDepositBalanceUSD": "3525531256.88005379274420405723698",
+      "totalBorrowBalanceUSD": "2907392549.65831072485443221016305",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "2.1632267552000676",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "1.5163084951098215",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "83",
+      "canBorrowFrom": true,
+      "isActive": false
+    },
+    {
+      "id": "0x23878914efe38d27c4d67ab83ed1b93a74d4086a",
+      "name": "Aave Ethereum USDT",
+      "inputToken": {
+        "symbol": "USDT"
+      },
+      "totalValueLockedUSD": "2862790275.83680661172408",
+      "totalDepositBalanceUSD": "2862790275.83680661172408",
+      "totalBorrowBalanceUSD": "2081939213.03862555252522",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "3.1618363645057853",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "2.0694223029547377",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x5ee5bf7ae06d1be5997a1a72006fe6c607ec6de8",
+      "name": "Aave Ethereum WBTC",
+      "inputToken": {
+        "symbol": "WBTC"
+      },
+      "totalValueLockedUSD": "2050198291.0140954535543104",
+      "totalDepositBalanceUSD": "2050198291.0140954535543104",
+      "totalBorrowBalanceUSD": "63567831.8592853384345812",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.3468927546870317",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0053778228856707",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x98c23e9d8f34fefb1b7bd6a91b7ff122f4e16f5c",
+      "name": "Aave Ethereum USDC",
+      "inputToken": {
+        "symbol": "USDC"
+      },
+      "totalValueLockedUSD": "2015884623.48520392431828",
+      "totalDepositBalanceUSD": "2015884623.48520392431828",
+      "totalBorrowBalanceUSD": "1799133960.03086711050235",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "3.8801882897747852",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "3.1165632587990407",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xbdfa7b7893081b35fb54027489e2bc7a38275129",
+      "name": "Aave Ethereum weETH",
+      "inputToken": {
+        "symbol": "weETH"
+      },
+      "totalValueLockedUSD": "1961472579.983808472413927546510109",
+      "totalDepositBalanceUSD": "1961472579.983808472413927546510109",
+      "totalBorrowBalanceUSD": "97129.76476483546473712572609173",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "1.0011554386684855",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0000272668088079",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "80",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x0b925ed163218f6662a35e0f0371ac234f9e9371",
+      "name": "Aave Ethereum wstETH",
+      "inputToken": {
+        "symbol": "wstETH"
+      },
+      "totalValueLockedUSD": "1570080514.024099235377740735280506",
+      "totalDepositBalanceUSD": "1570080514.024099235377740735280506",
+      "totalBorrowBalanceUSD": "8885513.87436896824999110283422892",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.0070740910634793",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0000260222372263",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "81",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x5c647ce0ae10658ec44fa4e11a51c96e94efd1dd",
+      "name": "Aave Ethereum cbBTC",
+      "inputToken": {
+        "symbol": "cbBTC"
+      },
+      "totalValueLockedUSD": "1047796036.26651757044",
+      "totalDepositBalanceUSD": "1047796036.26651757044",
+      "totalBorrowBalanceUSD": "7902695.18217171492",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.2877110323637965",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0010849880052886",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x2d62109243b87c4ba3ee7ba1d91b0dd0a074d7b1",
+      "name": "Aave Ethereum rsETH",
+      "inputToken": {
+        "symbol": "rsETH"
+      },
+      "totalValueLockedUSD": "815000585.4413766547496646976836972",
+      "totalDepositBalanceUSD": "815000585.4413766547496646976836972",
+      "totalBorrowBalanceUSD": "80147.09392669956319265249296487",
+      "rates": [
+        {
+          "rate": "0.0015297321185533",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0000001278686765",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "75",
+      "canBorrowFrom": false,
+      "isActive": false
+    },
+    {
+      "id": "0x4f5923fc5fd4a93352581b38b7cd26943012decf",
+      "name": "Aave Ethereum USDe",
+      "inputToken": {
+        "symbol": "USDe"
+      },
+      "totalValueLockedUSD": "384259865.9375263786891581173707948",
+      "totalDepositBalanceUSD": "384259865.9375263786891581173707948",
+      "totalBorrowBalanceUSD": "258814824.912152370758430325666906",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "2.9933647456171922",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "1.5120391896161396",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "75",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x4579a27af00a62c0eb156349f31b345c08386419",
+      "name": "Aave Ethereum sUSDe",
+      "inputToken": {
+        "symbol": "sUSDe"
+      },
+      "totalValueLockedUSD": "280075801.4195867757341633525823058",
+      "totalDepositBalanceUSD": "280075801.4195867757341633525823058",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "75",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x927709711794f3de5ddbf1d176bee2d55ba13c21",
+      "name": "Aave Ethereum osETH",
+      "inputToken": {
+        "symbol": "osETH"
+      },
+      "totalValueLockedUSD": "197706804.1402020672112285579522637",
+      "totalDepositBalanceUSD": "197706804.1402020672112285579522637",
+      "totalBorrowBalanceUSD": "227.28884290441914932218137948",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.0000178830680009",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.000000000017475",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "75",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x65906988adee75306021c417a1a3458040239602",
+      "name": "Aave Ethereum LBTC",
+      "inputToken": {
+        "symbol": "LBTC"
+      },
+      "totalValueLockedUSD": "142685843.649908270802545",
+      "totalDepositBalanceUSD": "142685843.649908270802545",
+      "totalBorrowBalanceUSD": "1101.3555855464794975",
+      "rates": [
+        {
+          "rate": "0.0000686110627624",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0000000002647956",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "75",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x00907f9921424583e7ffbfedf84f92b7b2be4977",
+      "name": "Aave Ethereum GHO",
+      "inputToken": {
+        "symbol": "GHO"
+      },
+      "totalValueLockedUSD": "135000000.191070840712935632",
+      "totalDepositBalanceUSD": "135000000.191070840712935632",
+      "totalBorrowBalanceUSD": "91298129.817506934983363997",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "3.75",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": true,
+      "isActive": false
+    },
+    {
+      "id": "0x10ac93971cdb1f5c778144084242374473c350da",
+      "name": "Aave Ethereum tBTC",
+      "inputToken": {
+        "symbol": "tBTC"
+      },
+      "totalValueLockedUSD": "123793006.527960839587918806948",
+      "totalDepositBalanceUSD": "123793006.527960839587918806948",
+      "totalBorrowBalanceUSD": "593336.908814246918470706544",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.2739648785747493",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0006565534954605",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x018008bfb33d285247a21d44e50697654f754e63",
+      "name": "Aave Ethereum DAI",
+      "inputToken": {
+        "symbol": "DAI"
+      },
+      "totalValueLockedUSD": "107104268.8548057362349482867054934",
+      "totalDepositBalanceUSD": "107104268.8548057362349482867054934",
+      "totalBorrowBalanceUSD": "94803299.63884861103948860748932878",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "4.8101263272090483",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "3.1928690299255166",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "77",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xec4ef66d4fceeba34abb4de69db391bc5476ccc8",
+      "name": "Aave Ethereum USDtb",
+      "inputToken": {
+        "symbol": "USDtb"
+      },
+      "totalValueLockedUSD": "84706744.19164043227691137",
+      "totalDepositBalanceUSD": "84706744.19164043227691137",
+      "totalBorrowBalanceUSD": "68387252.632294224326553779",
+      "rates": [
+        {
+          "rate": "5.8156737753215422",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "3.7558211822680547",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x5e8c8a7243651db1384c0ddfdbe39761e8e7e51a",
+      "name": "Aave Ethereum LINK",
+      "inputToken": {
+        "symbol": "LINK"
+      },
+      "totalValueLockedUSD": "74269576.71064186460032944892673716",
+      "totalDepositBalanceUSD": "74269576.71064186460032944892673716",
+      "totalBorrowBalanceUSD": "3947688.30508448717845707156652497",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.8268318163514816",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0351591744151817",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "71",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xcc9ee9483f662091a1de4795249e24ac0ac2630f",
+      "name": "Aave Ethereum rETH",
+      "inputToken": {
+        "symbol": "rETH"
+      },
+      "totalValueLockedUSD": "70243223.67788688315145052367916523",
+      "totalDepositBalanceUSD": "70243223.67788688315145052367916523",
+      "totalBorrowBalanceUSD": "82287.07079246432623066992283299",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.0182226987156189",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0000181450758689",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "79",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0xa700b4eb416be35b2911fd5dee80678ff64ff6c9",
+      "name": "Aave Ethereum AAVE",
+      "inputToken": {
+        "symbol": "AAVE"
+      },
+      "totalValueLockedUSD": "57350686.08400371151363782779392",
+      "totalDepositBalanceUSD": "57350686.08400371151363782779392",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "76",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x7c0477d085ecb607cf8429f3ec91ae5e1e460f4f",
+      "name": "Aave Ethereum USDG",
+      "inputToken": {
+        "symbol": "USDG"
+      },
+      "totalValueLockedUSD": "52712564.211258",
+      "totalDepositBalanceUSD": "52712564.211258",
+      "totalBorrowBalanceUSD": "42811021.507354",
+      "rates": [
+        {
+          "rate": "6.8055751267460699",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "4.4211039593684417",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xa78eba24d89e70a03ddb7ac195a15e53315aa5b4",
+      "name": "Aave Ethereum PT_srUSDe_25JUN2026",
+      "inputToken": {
+        "symbol": "PT-srUSDe-25JUN2026"
+      },
+      "totalValueLockedUSD": "46699552.58826625722562950298237245",
+      "totalDepositBalanceUSD": "46699552.58826625722562950298237245",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0xaa6e91c82942aeae040303bf96c15a6dbcb82ca0",
+      "name": "Aave Ethereum EURC",
+      "inputToken": {
+        "symbol": "EURC"
+      },
+      "totalValueLockedUSD": "45500971.17268194363069",
+      "totalDepositBalanceUSD": "45500971.17268194363069",
+      "totalBorrowBalanceUSD": "29440870.48841102097373",
+      "rates": [
+        {
+          "rate": "3.9540172209656416",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "2.3024989460687672",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x8a2b6f94ff3a89a03e8c02ee92b55af90c9454a2",
+      "name": "Aave Ethereum XAUt",
+      "inputToken": {
+        "symbol": "XAUt"
+      },
+      "totalValueLockedUSD": "40188088.999956755",
+      "totalDepositBalanceUSD": "40188088.999956755",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "75",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x24ab03a9a5bc2c49e5523e8d915a3536ac38b91d",
+      "name": "Aave Ethereum syrupUSDT",
+      "inputToken": {
+        "symbol": "syrupUSDT"
+      },
+      "totalValueLockedUSD": "15377664.976",
+      "totalDepositBalanceUSD": "15377664.976",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.1",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x0c0d01abf3e6adfca0989ebba9d6e85dd58eab1e",
+      "name": "Aave Ethereum PYUSD",
+      "inputToken": {
+        "symbol": "PYUSD"
+      },
+      "totalValueLockedUSD": "12673773.38492048018049",
+      "totalDepositBalanceUSD": "12673773.38492048018049",
+      "totalBorrowBalanceUSD": "10494806.01799995392952",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "4.6801486994384773",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "3.4877865557349313",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": true,
+      "isActive": false
+    },
+    {
+      "id": "0x32a6268f9ba3642dda7892add74f1d34469a4259",
+      "name": "Aave Ethereum USDS",
+      "inputToken": {
+        "symbol": "USDS"
+      },
+      "totalValueLockedUSD": "12454417.661690545193292305385231",
+      "totalDepositBalanceUSD": "12454417.661690545193292305385231",
+      "totalBorrowBalanceUSD": "383730.21187511595853996250352",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "5.5251171973063834",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.127673418528536",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xcca43cef272c30415866914351fdfc3e881bb7c2",
+      "name": "Aave Ethereum FBTC",
+      "inputToken": {
+        "symbol": "FBTC"
+      },
+      "totalValueLockedUSD": "11335781.9961642288",
+      "totalDepositBalanceUSD": "11335781.9961642288",
+      "totalBorrowBalanceUSD": "64872.01185377616",
+      "rates": [
+        {
+          "rate": "0.5508689996530493",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0015762462160627",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x977b6fc5de62598b08c85ac8cf2b745874e8b78c",
+      "name": "Aave Ethereum cbETH",
+      "inputToken": {
+        "symbol": "cbETH"
+      },
+      "totalValueLockedUSD": "8340555.87691942547408808635242848",
+      "totalDepositBalanceUSD": "8340555.87691942547408808635242848",
+      "totalBorrowBalanceUSD": "41270.4653079968160375734376925",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.076971486522337",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.000323737603511",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "79",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0xfa82580c16a31d0c1bc632a36f82e83efef3eec0",
+      "name": "Aave Ethereum RLUSD",
+      "inputToken": {
+        "symbol": "RLUSD"
+      },
+      "totalValueLockedUSD": "6438442.99504202444502626950115",
+      "totalDepositBalanceUSD": "6438442.99504202444502626950115",
+      "totalBorrowBalanceUSD": "5242610.62038940724454695158023125",
+      "rates": [
+        {
+          "rate": "8.540736617880668",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "5.5628409569129568",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x5fefd7069a7d91d01f269dade14526ccf3487810",
+      "name": "Aave Ethereum eBTC",
+      "inputToken": {
+        "symbol": "eBTC"
+      },
+      "totalValueLockedUSD": "5553062.2173262373793828",
+      "totalDepositBalanceUSD": "5553062.2173262373793828",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "72",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x4e2a4d9b3df7aae73b418bd39f3af9e148e3f479",
+      "name": "Aave Ethereum ezETH",
+      "inputToken": {
+        "symbol": "ezETH"
+      },
+      "totalValueLockedUSD": "3827362.07214877247995361886489948",
+      "totalDepositBalanceUSD": "3827362.07214877247995361886489948",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.1",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x7b95ec873268a6bfc6427e7a28e396db9d0ebc65",
+      "name": "Aave Ethereum CRV",
+      "inputToken": {
+        "symbol": "CRV"
+      },
+      "totalValueLockedUSD": "2196598.29564233020804270052040625",
+      "totalDepositBalanceUSD": "2196598.29564233020804270052040625",
+      "totalBorrowBalanceUSD": "254670.52825302457356475842404375",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "5.5763331894637951",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.4202198989420792",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "41",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x3fe6a295459fae07df8a0cecc36f37160fe86aa9",
+      "name": "Aave Ethereum LUSD",
+      "inputToken": {
+        "symbol": "LUSD"
+      },
+      "totalValueLockedUSD": "2013703.49115368455024256238596025",
+      "totalDepositBalanceUSD": "2013703.49115368455024256238596025",
+      "totalBorrowBalanceUSD": "675568.7127017660836016697038014",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "2.0970759725121377",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.5629069970648745",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "77",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xf6d2224916ddfbbab6e6bd0d1b7034f4ae0cab18",
+      "name": "Aave Ethereum UNI",
+      "inputToken": {
+        "symbol": "UNI"
+      },
+      "totalValueLockedUSD": "1623298.866515828003542281582648",
+      "totalDepositBalanceUSD": "1623298.866515828003542281582648",
+      "totalBorrowBalanceUSD": "27785.280941637817876005386268",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.2662578830035833",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0036459332046507",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "74",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0xb76cf92076adbf1d9c39294fa8e7a67579fde357",
+      "name": "Aave Ethereum RPL",
+      "inputToken": {
+        "symbol": "RPL"
+      },
+      "totalValueLockedUSD": "572875.048861400581094322225504",
+      "totalDepositBalanceUSD": "572875.048861400581094322225504",
+      "totalBorrowBalanceUSD": "179969.718872598214328352882368",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "3.3539793113153911",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.8428918819340083",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x12b70410d60f926558245f769059ea3fc7a7353e",
+      "name": "Aave Ethereum BTCb",
+      "inputToken": {
+        "symbol": "BTC.b"
+      },
+      "totalValueLockedUSD": "437804.16561702252",
+      "totalDepositBalanceUSD": "437804.16561702252",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x5f9190496e0dfc831c3bd307978de4a245e2f5cd",
+      "name": "Aave Ethereum eUSDe",
+      "inputToken": {
+        "symbol": "eUSDe"
+      },
+      "totalValueLockedUSD": "250094.67592999799940110086402604",
+      "totalDepositBalanceUSD": "250094.67592999799940110086402604",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.1",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x481a2acf3a72ffdc602a9541896ca1db87f86cf7",
+      "name": "Aave Ethereum tETH",
+      "inputToken": {
+        "symbol": "tETH"
+      },
+      "totalValueLockedUSD": "230422.11815522238431093149180032",
+      "totalDepositBalanceUSD": "230422.11815522238431093149180032",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.1",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x71aef7b30728b9bb371578f36c5a1f1502a5723e",
+      "name": "Aave Ethereum 1INCH",
+      "inputToken": {
+        "symbol": "1INCH"
+      },
+      "totalValueLockedUSD": "214168.22129751791241546530211552",
+      "totalDepositBalanceUSD": "214168.22129751791241546530211552",
+      "totalBorrowBalanceUSD": "5485.87255048994899282198475488",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.5122954488006756",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0104978614971492",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "67",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0xb82fa9f31612989525992fcfbb09ab22eff5c85a",
+      "name": "Aave Ethereum crvUSD",
+      "inputToken": {
+        "symbol": "crvUSD"
+      },
+      "totalValueLockedUSD": "211674.55971623565520226265008454",
+      "totalDepositBalanceUSD": "211674.55971623565520226265008454",
+      "totalBorrowBalanceUSD": "78082.32456199564769482104847044",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "2.5359716540624182",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.7483389041567249",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x8a458a9dc9048e005d22849f470891b840296619",
+      "name": "Aave Ethereum MKR",
+      "inputToken": {
+        "symbol": "MKR"
+      },
+      "totalValueLockedUSD": "200809.1125281291211810203627744",
+      "totalDepositBalanceUSD": "200809.1125281291211810203627744",
+      "totalBorrowBalanceUSD": "2010.5673715493263286203822656",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.1557475211247395",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0012475164083652",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "70",
+      "canBorrowFrom": true,
+      "isActive": false
+    },
+    {
+      "id": "0x9a44fd41566876a39655f74971a3a6ea0a17a454",
+      "name": "Aave Ethereum LDO",
+      "inputToken": {
+        "symbol": "LDO"
+      },
+      "totalValueLockedUSD": "145953.53791346744516105255771115",
+      "totalDepositBalanceUSD": "145953.53791346744516105255771115",
+      "totalBorrowBalanceUSD": "12848.76209797068840006220079115",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "1.3694039054957785",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0964423057570504",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "50",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x1c0e06a0b1a4c160c17545ff2a951bfca57c0002",
+      "name": "Aave Ethereum ETHx",
+      "inputToken": {
+        "symbol": "ETHx"
+      },
+      "totalValueLockedUSD": "140294.3348674362521503803597282",
+      "totalDepositBalanceUSD": "140294.3348674362521503803597282",
+      "totalBorrowBalanceUSD": "558.97502342187299477863339116",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0.0619780330580079",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0002098983275022",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "77",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x545bd6c032efdde65a377a6719def2796c8e0f2e",
+      "name": "Aave Ethereum ENS",
+      "inputToken": {
+        "symbol": "ENS"
+      },
+      "totalValueLockedUSD": "87549.8071119352751472260693628",
+      "totalDepositBalanceUSD": "87549.8071119352751472260693628",
+      "totalBorrowBalanceUSD": "6280.8376374289724610671139744",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "1.4347978076872933",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0823457899577705",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "49",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0xc7b4c17861357b8abb91f25581e7263e08dcb59c",
+      "name": "Aave Ethereum SNX",
+      "inputToken": {
+        "symbol": "SNX"
+      },
+      "totalValueLockedUSD": "67616.62426870176272592841273",
+      "totalDepositBalanceUSD": "67616.62426870176272592841273",
+      "totalBorrowBalanceUSD": "14419.8915210838339620113642",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "13.103854017441459",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.1396315907471999",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "65",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x4c612e3b15b96ff9a6faed838f8d07d479a8dd4c",
+      "name": "Aave Ethereum sDAI",
+      "inputToken": {
+        "symbol": "sDAI"
+      },
+      "totalValueLockedUSD": "50359.8260420453912681558132256",
+      "totalDepositBalanceUSD": "50359.8260420453912681558132256",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "78",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x2516e7b3f76294e03c42aa4c5b5b4dce9c436fb8",
+      "name": "Aave Ethereum BAL",
+      "inputToken": {
+        "symbol": "BAL"
+      },
+      "totalValueLockedUSD": "47322.80708115263243794667184",
+      "totalDepositBalanceUSD": "47322.80708115263243794667184",
+      "totalBorrowBalanceUSD": "2701.84809973848975039287748",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "6.9030717344678605",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.3152889767728755",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "59",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0xd4e245848d6e1220dbe62e155d89fa327e43cb06",
+      "name": "Aave Ethereum FRAX",
+      "inputToken": {
+        "symbol": "FRAX"
+      },
+      "totalValueLockedUSD": "38536.91327569085550418286334912",
+      "totalDepositBalanceUSD": "38536.91327569085550418286334912",
+      "totalBorrowBalanceUSD": "28492.94403440899436917058269952",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "STABLE"
+        },
+        {
+          "rate": "4.4641730904622022",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "2.6085940580643415",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "72",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0x38a5357ce55c81add62abc84fb32981e2626adef",
+      "name": "Aave Ethereum PT_USDe_25SEP2025",
+      "inputToken": {
+        "symbol": "PT-USDe-25SEP2025"
+      },
+      "totalValueLockedUSD": "27819.81007911993747996738491616",
+      "totalDepositBalanceUSD": "27819.81007911993747996738491616",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.1",
+      "canBorrowFrom": false,
+      "isActive": true
+    },
+    {
+      "id": "0xaa0200d169ff3ba9385c12e073c5d1d30434ae7b",
+      "name": "Aave Ethereum mUSD",
+      "inputToken": {
+        "symbol": "mUSD"
+      },
+      "totalValueLockedUSD": "26155.906921",
+      "totalDepositBalanceUSD": "26155.906921",
+      "totalBorrowBalanceUSD": "16474.547538",
+      "rates": [
+        {
+          "rate": "3.5428150248393906",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "1.7851076693657219",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": true,
+      "isActive": true
+    }
+  ]
+}

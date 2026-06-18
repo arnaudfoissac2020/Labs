@@ -29,6 +29,7 @@ Sources :
 """
 
 import os
+import sys
 import requests
 import json
 from datetime import datetime, timedelta
@@ -36,6 +37,9 @@ import pandas as pd
 from dotenv import load_dotenv
 from query_helper import run_graphql_query
 from query_helper import fetch_defillama
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+from shared.graphql_queries import LENDING_MARKETS_QUERY
 
 load_dotenv()
 
@@ -83,40 +87,17 @@ SCREENING_THRESHOLDS = {
 # ═══════════════════════════════════════════════════════════════════════════════
 # NIVEAU 1 — SCREENING DEFILLAMA (5 PROTOCOLES)
 # ═══════════════════════════════════════════════════════════════════════════════
-def get_protocol_tvl_summary(protocol_slug: str) -> dict:
-    """
-    Récupère le résumé TVL d'un protocole via DeFi Llama.
 
-    DeFi Llama fournit pour chaque protocole :
-    - Le TVL total toutes chaînes confondues
-    - La décomposition par chaîne (on isole Ethereum)
-    - L'historique TVL sur 30/90 jours
-    - Les revenus générés (fees)
-
-    Args:
-        protocol_slug : Identifiant DeFi Llama du protocole
-
-    Returns:
-        Dictionnaire avec les métriques clés
-    """
-
-    try:
-        data = fetch_defillama(f"/protocol/{protocol_slug}")
-    except requests.HTTPError as e:
-        print(f"   ⚠️  Erreur API pour {protocol_slug} : {e}")
-        return {}
-
-    # TVL actuel toutes chaînes
+def _parse_protocol_tvl_summary(data: dict) -> dict:
+    """Pure parser — receives raw DeFi Llama /protocol/<slug> JSON, returns metrics dict."""
     current_tvl_total = data.get("tvl", [{}])[-1].get("totalLiquidityUSD", 0) \
         if data.get("tvl") else 0
 
-    # TVL Ethereum uniquement (chainTvls)
     chain_tvls = data.get("chainTvls", {})
     eth_tvl_series = chain_tvls.get("Ethereum", {}).get("tvl", [])
     current_tvl_eth = eth_tvl_series[-1].get("totalLiquidityUSD", 0) \
         if eth_tvl_series else 0
 
-    # Historique TVL Ethereum sur 30 jours
     tvl_30d = eth_tvl_series[-30:] if len(eth_tvl_series) >= 30 else eth_tvl_series
     tvl_values = [p.get("totalLiquidityUSD", 0) for p in tvl_30d]
 
@@ -134,13 +115,12 @@ def get_protocol_tvl_summary(protocol_slug: str) -> dict:
         if tvl_values and max(tvl_values) > 0 else 0
     )
 
-    # Revenus du protocole (fees annualisés)
     fees_data = data.get("fees", {})
     annual_revenue = fees_data.get("total30d", 0) * 12 \
         if fees_data.get("total30d") else 0
 
     return {
-        "name": data.get("name", protocol_slug),
+        "name": data.get("name", ""),
         "category": data.get("category", "N/A"),
         "tvl_total_usd": current_tvl_total,
         "tvl_eth_usd": current_tvl_eth,
@@ -150,6 +130,41 @@ def get_protocol_tvl_summary(protocol_slug: str) -> dict:
         "audit_links": data.get("audits", []),
         "description": data.get("description", "")[:100],
     }
+
+
+def get_protocol_tvl_summary(protocol_slug: str) -> dict:
+    """
+    Récupère le résumé TVL d'un protocole via DeFi Llama.
+
+    DeFi Llama fournit pour chaque protocole :
+    - Le TVL total toutes chaînes confondues
+    - La décomposition par chaîne (on isole Ethereum)
+    - L'historique TVL sur 30/90 jours
+    - Les revenus générés (fees)
+
+    Args:
+        protocol_slug : Identifiant DeFi Llama du protocole
+
+    Returns:
+        Dictionnaire avec les métriques clés
+    """
+    try:
+        data = fetch_defillama(f"/protocol/{protocol_slug}")
+    except requests.HTTPError as e:
+        print(f"   ⚠️  Erreur API pour {protocol_slug} : {e}")
+        return {}
+    return _parse_protocol_tvl_summary(data)
+
+def _apply_screening_criteria(df: pd.DataFrame, thresholds: dict) -> pd.DataFrame:
+    """Pure filter — adds 'eligible' column based on the three institutional thresholds."""
+    df = df.copy()
+    df["eligible"] = (
+        (df["tvl_eth_usd"] >= thresholds["min_tvl_usd"]) &
+        (df["tvl_change_30d_pct"] >= thresholds["max_tvl_drop_30d_pct"]) &
+        (df["tvl_stability_ratio"] >= thresholds["min_tvl_stability"])
+    )
+    return df
+
 
 def run_screening(protocols: dict) -> pd.DataFrame:
     """
@@ -186,13 +201,7 @@ def run_screening(protocols: dict) -> pd.DataFrame:
 
     df = pd.DataFrame(rows)
     df = df.sort_values("tvl_eth_usd", ascending=False).reset_index(drop=True)
-
-    # Application des critères de qualification
-    df["eligible"] = (
-        (df["tvl_eth_usd"] >= SCREENING_THRESHOLDS["min_tvl_usd"]) &
-        (df["tvl_change_30d_pct"] >= SCREENING_THRESHOLDS["max_tvl_drop_30d_pct"]) &
-        (df["tvl_stability_ratio"] >= SCREENING_THRESHOLDS["min_tvl_stability"])
-    )
+    df = _apply_screening_criteria(df, SCREENING_THRESHOLDS)
 
     # Affichage du tableau de screening
     print(f"\n{'Protocole':<16} {'TVL ETH ($M)':>12} {'Var 30j':>9} {'Stabilité':>10} {'Revenu/an ($M)':>15} {'Éligible':>9}")
@@ -247,55 +256,27 @@ def get_thegraph_lending_markets(protocol_name: str, subgraph_url: str) -> pd.Da
     Returns:
         DataFrame avec les métriques par marché
     """
-    # Requête générique compatible Aave V3 et Morpho
-    # (les deux utilisent le schéma Messari standard sur The Graph)
-    query = """
-    {
-      markets(
-        first: 50
-        orderBy: totalValueLockedUSD
-        orderDirection: desc
-      ) {
-        id
-        name
-        inputToken {
-          symbol
-        }
-        totalValueLockedUSD
-        totalDepositBalanceUSD
-        totalBorrowBalanceUSD
-        rates {
-          rate
-          side
-          type
-        }
-        liquidationThreshold
-        canBorrowFrom
-        isActive
-      }
-    }
-    """
-
     try:
-        data = run_graphql_query(subgraph_url, query)
+        data = run_graphql_query(subgraph_url, LENDING_MARKETS_QUERY)
     except Exception as e:
         print(f"   ⚠️  Erreur subgraph {protocol_name} : {e}")
         return pd.DataFrame()
+    return _parse_lending_markets(protocol_name, data)
 
+
+def _parse_lending_markets(protocol_name: str, data: dict) -> pd.DataFrame:
+    """Pure parser — receives raw GraphQL 'data' dict, returns markets DataFrame."""
     markets = [m for m in data.get("markets", []) if m.get("isActive", True)]
-
     if not markets:
         return pd.DataFrame()
 
     total_tvl = sum(float(m["totalValueLockedUSD"]) for m in markets)
     rows = []
-
     for market in markets:
         tvl = float(market["totalValueLockedUSD"])
         deposits = float(market["totalDepositBalanceUSD"])
         borrows = float(market["totalBorrowBalanceUSD"])
 
-        # Extraction du taux de dépôt variable
         supply_rate = 0.0
         for rate in market.get("rates", []):
             if rate.get("side") == "LENDER" and rate.get("type") == "VARIABLE":
@@ -304,7 +285,6 @@ def get_thegraph_lending_markets(protocol_name: str, subgraph_url: str) -> pd.Da
 
         rows.append({
             "protocol": protocol_name,
-            #"market": market["inputToken"]["symbol"],
             "market": market["name"],
             "tvl_usd": tvl,
             "tvl_share_pct": (tvl / total_tvl * 100) if total_tvl > 0 else 0,
@@ -318,7 +298,26 @@ def get_thegraph_lending_markets(protocol_name: str, subgraph_url: str) -> pd.Da
 
     df = pd.DataFrame(rows)
     df["total_tvl_protocol"] = total_tvl
+    return df
 
+
+def _parse_tvl_history(data: dict, days: int = 30) -> pd.DataFrame:
+    """Pure parser — receives raw DeFi Llama /protocol/<slug> JSON, returns TVL history DataFrame."""
+    chain_tvls = data.get("chainTvls", {})
+    eth_series = chain_tvls.get("Ethereum", {}).get("tvl", [])
+    if not eth_series:
+        return pd.DataFrame()
+
+    recent = eth_series[-days:]
+    rows = [
+        {
+            "date": datetime.utcfromtimestamp(point["date"]).strftime("%Y-%m-%d"),
+            "tvl_usd": float(point["totalLiquidityUSD"]),
+        }
+        for point in recent
+    ]
+    df = pd.DataFrame(rows)
+    df["tvl_change_pct"] = df["tvl_usd"].pct_change() * 100
     return df
 
 
@@ -342,25 +341,55 @@ def get_tvl_history_defillama(protocol_slug: str, days: int = 30) -> pd.DataFram
     except Exception as e:
         print(f"   ⚠️  Erreur historique TVL : {e}")
         return pd.DataFrame()
+    return _parse_tvl_history(data, days)
 
-    chain_tvls = data.get("chainTvls", {})
-    eth_series = chain_tvls.get("Ethereum", {}).get("tvl", [])
 
-    if not eth_series:
-        return pd.DataFrame()
+def _compute_protocol_scores(tvl_metrics: dict, concentration_metrics: dict) -> dict:
+    """Pure scoring — computes the 3-dimension score dict from pre-computed metrics."""
+    scores = {}
 
-    recent = eth_series[-days:]
-    rows = []
-    for point in recent:
-        rows.append({
-            "date": datetime.utcfromtimestamp(point["date"]).strftime("%Y-%m-%d"),
-            "tvl_usd": float(point["totalLiquidityUSD"]),
-        })
+    # Dimension 1 : Solidité du TVL
+    if tvl_metrics:
+        score = 4
+        if tvl_metrics.get("current_usd", 0) < 500_000_000:
+            score -= 2
+        if tvl_metrics.get("max_daily_drop_pct", 0) < -20:
+            score -= 1
+        if tvl_metrics.get("trend_30d_pct", 0) < -15:
+            score -= 1
+        if tvl_metrics.get("stability_ratio", 1) < 0.70:
+            score -= 1
+        scores["tvl_solidity"] = max(1, min(4, score))
 
-    df = pd.DataFrame(rows)
-    df["tvl_change_pct"] = df["tvl_usd"].pct_change() * 100
+    # Dimension 2 : Diversification
+    if concentration_metrics:
+        hhi = concentration_metrics.get("hhi", 0)
+        if hhi < 1500:
+            scores["concentration"] = 4
+        elif hhi < 2000:
+            scores["concentration"] = 3
+        elif hhi < 2500:
+            scores["concentration"] = 2
+        else:
+            scores["concentration"] = 1
 
-    return df
+    # Dimension 3 : Santé opérationnelle
+    if concentration_metrics:
+        score = 4
+        avg_util = concentration_metrics.get("avg_utilization", 0)
+        high_util = concentration_metrics.get("high_util_count", 0)
+        if avg_util > 0.90:
+            score -= 2
+        elif avg_util > 0.80:
+            score -= 1
+        if high_util >= 3:
+            score -= 1
+        scores["health"] = max(1, min(4, score))
+
+    if scores:
+        scores["global"] = round(sum(scores.values()) / len(scores), 2)
+
+    return scores
 
 
 def analyze_protocol_deep(
@@ -462,49 +491,7 @@ def analyze_protocol_deep(
                 f"{row['supply_apy_pct']:>10.2f}%"
             )
 
-    # ── Scoring ────────────────────────────────────────────────────────
-    scores = {}
-
-    # Dimension 1 : Solidité du TVL
-    if tvl_metrics:
-        score = 4
-        if tvl_metrics.get("current_usd", 0) < 500_000_000:
-            score -= 2
-        if tvl_metrics.get("max_daily_drop_pct", 0) < -20:
-            score -= 1
-        if tvl_metrics.get("trend_30d_pct", 0) < -15:
-            score -= 1
-        if tvl_metrics.get("stability_ratio", 1) < 0.70:
-            score -= 1
-        scores["tvl_solidity"] = max(1, min(4, score))
-
-    # Dimension 2 : Diversification
-    if concentration_metrics:
-        hhi = concentration_metrics.get("hhi", 0)
-        if hhi < 1500:
-            scores["concentration"] = 4
-        elif hhi < 2000:
-            scores["concentration"] = 3
-        elif hhi < 2500:
-            scores["concentration"] = 2
-        else:
-            scores["concentration"] = 1
-
-    # Dimension 3 : Santé opérationnelle
-    if concentration_metrics:
-        score = 4
-        avg_util = concentration_metrics.get("avg_utilization", 0)
-        high_util = concentration_metrics.get("high_util_count", 0)
-        if avg_util > 0.90:
-            score -= 2
-        elif avg_util > 0.80:
-            score -= 1
-        if high_util >= 3:
-            score -= 1
-        scores["health"] = max(1, min(4, score))
-
-    if scores:
-        scores["global"] = round(sum(scores.values()) / len(scores), 2)
+    scores = _compute_protocol_scores(tvl_metrics, concentration_metrics)
 
     return {
         "protocol": protocol_name,

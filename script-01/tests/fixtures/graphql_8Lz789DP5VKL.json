@@ -1,0 +1,1254 @@
+{
+  "markets": [
+    {
+      "id": "0x8eaf7b29f02ba8d8c1d7aeb587403dcb16e2e943e4e2f5f94b0963c2386406c9",
+      "name": "USDC / PAXG",
+      "inputToken": {
+        "symbol": "PAXG"
+      },
+      "totalValueLockedUSD": "1035777171.88358606554816",
+      "totalDepositBalanceUSD": "1035777171.88358606554816",
+      "totalBorrowBalanceUSD": "1035777171.88358606554816",
+      "rates": [
+        {
+          "rate": "7.999999999933248",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "7.999999999933248",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xe7e9694b754c4d4f7e21faf7223f6fa71abaeb10296a4c43a54a7977149687d2",
+      "name": "USDT / wstETH",
+      "inputToken": {
+        "symbol": "wstETH"
+      },
+      "totalValueLockedUSD": "636390254.7507101673952853728326397",
+      "totalDepositBalanceUSD": "636390254.7507101673952853728326397",
+      "totalBorrowBalanceUSD": "140908749.52987489191552",
+      "rates": [
+        {
+          "rate": "0.032658342556464",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.024705984407793103667961963872784",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x3a85e619751152991742810df6ec69ce473daef99e28a64ab2340d7b7ccfee49",
+      "name": "USDC / WBTC",
+      "inputToken": {
+        "symbol": "WBTC"
+      },
+      "totalValueLockedUSD": "378620083.18029431359504426353248",
+      "totalDepositBalanceUSD": "378620083.18029431359504426353248",
+      "totalBorrowBalanceUSD": "125578368.22394726270793",
+      "rates": [
+        {
+          "rate": "0.041009857890768",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.036156521921179721066131130031456",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x64d65c9a2d91c36d56fbc42d69e979335320169b3df63bf92789e2c8883fcc64",
+      "name": "USDC / cbBTC",
+      "inputToken": {
+        "symbol": "cbBTC"
+      },
+      "totalValueLockedUSD": "266899494.82547881430334",
+      "totalDepositBalanceUSD": "266899494.82547881430334",
+      "totalBorrowBalanceUSD": "236439943.26922597410752",
+      "rates": [
+        {
+          "rate": "0.040834156296672",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.03617401226085109595972036776176",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xa921ef34e2fc7a27ccc50ae7e4b154e16c9799d3387076c421423ef52ac4df99",
+      "name": "USDT / WBTC",
+      "inputToken": {
+        "symbol": "WBTC"
+      },
+      "totalValueLockedUSD": "156644439.729968896392508991265056",
+      "totalDepositBalanceUSD": "156644439.729968896392508991265056",
+      "totalBorrowBalanceUSD": "50876145.8267586680133",
+      "rates": [
+        {
+          "rate": "0.03553527426408",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.02470636089559373909512574451528",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xb8fc70e82bc5bb53e773626fcc6a23f7eefa036918d7ef216ecfb1950a94a85e",
+      "name": "WETH / wstETH",
+      "inputToken": {
+        "symbol": "wstETH"
+      },
+      "totalValueLockedUSD": "151814416.0831086905497154935512968",
+      "totalDepositBalanceUSD": "151814416.0831086905497154935512968",
+      "totalBorrowBalanceUSD": "67782111.2155669676124412317261079",
+      "rates": [
+        {
+          "rate": "0.018479819965392",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.016508207912461906128018857010864",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.965",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x85d59152eeeab7ca024804895b358868d8dd1e134171be400d7792d5604a212c",
+      "name": "PYUSD / weETH",
+      "inputToken": {
+        "symbol": "weETH"
+      },
+      "totalValueLockedUSD": "130997737.665388084368581093075404",
+      "totalDepositBalanceUSD": "130997737.665388084368581093075404",
+      "totalBorrowBalanceUSD": "46184024.744574",
+      "rates": [
+        {
+          "rate": "0.032979793734864",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.029851442342047936487782327428",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x41c41d0c9aadbf4751f5ee215ed5a16954a4b34e1b70fca5393d4b08858fa3fa",
+      "name": "PYUSD / PRIME",
+      "inputToken": {
+        "symbol": "PRIME"
+      },
+      "totalValueLockedUSD": "100906550.27078",
+      "totalDepositBalanceUSD": "100906550.27078",
+      "totalBorrowBalanceUSD": "91283209.484987",
+      "rates": [
+        {
+          "rate": "0.044509995578736",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.040265128871085294987886242799776",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xb323495f7e4148be5643a4ea4a8221eef163e4bccfdedc2a6f4696baacbc86cc",
+      "name": "USDC / wstETH",
+      "inputToken": {
+        "symbol": "wstETH"
+      },
+      "totalValueLockedUSD": "93747442.17059333591540443342847456",
+      "totalDepositBalanceUSD": "93747442.17059333591540443342847456",
+      "totalBorrowBalanceUSD": "28953100.59316704909769",
+      "rates": [
+        {
+          "rate": "0.040836393460512",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.036159877326253619909158970311296",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x0f9563442d64ab3bd3bcb27058db0b0d4046a4c46f0acd811dacae9551d2b129",
+      "name": "USDC / sdeUSD",
+      "inputToken": {
+        "symbol": "sdeUSD"
+      },
+      "totalValueLockedUSD": "77062189.93529581770226",
+      "totalDepositBalanceUSD": "77062189.93529581770226",
+      "totalBorrowBalanceUSD": "77062189.93529581770226",
+      "rates": [
+        {
+          "rate": "7.999999999933248",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "7.999999999933248",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xc9629945524f3fde56c7e8854a6c3d48e76b9d97236abbe73c750fcc7aeb8501",
+      "name": "PYUSD / syrupUSDC",
+      "inputToken": {
+        "symbol": "syrupUSDC"
+      },
+      "totalValueLockedUSD": "75992436.493804",
+      "totalDepositBalanceUSD": "75992436.493804",
+      "totalBorrowBalanceUSD": "67586775.611005",
+      "rates": [
+        {
+          "rate": "0.040275748376208",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.035820774983178945782244749927232",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x90ef0c5a0dc7c4de4ad4585002d44e9d411d212d2f6258e94948beecf8b4c0d5",
+      "name": "PYUSD / sUSDe",
+      "inputToken": {
+        "symbol": "sUSDe"
+      },
+      "totalValueLockedUSD": "75789051.47543750145138149269075536",
+      "totalDepositBalanceUSD": "75789051.47543750145138149269075536",
+      "totalBorrowBalanceUSD": "35671024.301144",
+      "rates": [
+        {
+          "rate": "0.033068667134016",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0298625934693213268158844032768",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xe51f9aaad25d0e755429cf77076b3c2d37cb1228ed81f8a5482f2102c220eef5",
+      "name": "PYUSD / kBTC",
+      "inputToken": {
+        "symbol": "kBTC"
+      },
+      "totalValueLockedUSD": "71867159.138469",
+      "totalDepositBalanceUSD": "71867159.138469",
+      "totalBorrowBalanceUSD": "71389830.541283",
+      "rates": [
+        {
+          "rate": "0.023341750282656",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.023186718623524754401279789343328",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x88a18b2f4d94e7ad27a381b15531c06abf05a7c99dd5d3c3679875fed6f7e742",
+      "name": "USDtb / sUSDe",
+      "inputToken": {
+        "symbol": "sUSDe"
+      },
+      "totalValueLockedUSD": "69466614.37972850591126445795307132",
+      "totalDepositBalanceUSD": "69466614.37972850591126445795307132",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0.03432173697504",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0311409623804541197910825862512",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xea4bfb18df0ee6bffb7b3f0270899a8adb92ab6b684709634c8276128813cfd4",
+      "name": "RLUSD / weETH",
+      "inputToken": {
+        "symbol": "weETH"
+      },
+      "totalValueLockedUSD": "65341155.30196042546612255831750248",
+      "totalDepositBalanceUSD": "65341155.30196042546612255831750248",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0.029561139015984",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.026678607604093127827714956898032",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x3274643db77a064abd3bc851de77556a4ad2e2f502f4f0c80845fa8f909ecf0b",
+      "name": "USDT / sUSDS",
+      "inputToken": {
+        "symbol": "sUSDS"
+      },
+      "totalValueLockedUSD": "65231629.97774305071114",
+      "totalDepositBalanceUSD": "65231629.97774305071114",
+      "totalBorrowBalanceUSD": "51961286.31332845787856",
+      "rates": [
+        {
+          "rate": "0.025302731453136",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.02015529083044922232651245518728",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.965",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x37e7484d642d90f14451f1910ba4b7b8e4c3ccdd0ec28f8b2bdb35479e472ba7",
+      "name": "WETH / weETH",
+      "inputToken": {
+        "symbol": "weETH"
+      },
+      "totalValueLockedUSD": "61279999.98010916141393669897053514",
+      "totalDepositBalanceUSD": "61279999.98010916141393669897053514",
+      "totalBorrowBalanceUSD": "27275223.98913221986427695956507716",
+      "rates": [
+        {
+          "rate": "0.01875542246712",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0165107817779166601311698867592",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.945",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xe83d72fa5b00dcd46d9e0e860d95aa540d5ec106da5833108a9f826f21f36f52",
+      "name": "USDC / AA_FalconXUSDC",
+      "inputToken": {
+        "symbol": "AA_FalconXUSDC"
+      },
+      "totalValueLockedUSD": "52395769.46525406098281",
+      "totalDepositBalanceUSD": "52395769.46525406098281",
+      "totalBorrowBalanceUSD": "45082793.45864442417381",
+      "rates": [
+        {
+          "rate": "0.0565262703684",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0486367925886841053742566605712",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.77",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xd0e50cdac92fe2172043f5e0c36532c6369d24947e40968f34a5e8819ca9ec5d",
+      "name": "WETH / wstETH",
+      "inputToken": {
+        "symbol": "wstETH"
+      },
+      "totalValueLockedUSD": "46773369.09420208902168205409957011",
+      "totalDepositBalanceUSD": "46773369.09420208902168205409957011",
+      "totalBorrowBalanceUSD": "20791250.71896539684314940829145452",
+      "rates": [
+        {
+          "rate": "0.018117141805728",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.016308746746525161103626704621088",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.945",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x6a7e36eb088bd501d73f7ab4c5b8671358559341a78ce521c9e499dc0bc642b9",
+      "name": "PYUSD / LBTC",
+      "inputToken": {
+        "symbol": "LBTC"
+      },
+      "totalValueLockedUSD": "43034014.539588",
+      "totalDepositBalanceUSD": "43034014.539588",
+      "totalBorrowBalanceUSD": "38937094.410183",
+      "rates": [
+        {
+          "rate": "0.03493837851624",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.03161217835194258726502860743928",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xa36e440fbc54d7ed744ae4895b2729642a8be5d488cdd477c59b54afbb90b5bf",
+      "name": "WBTC / unknown",
+      "inputToken": {
+        "symbol": "unknown"
+      },
+      "totalValueLockedUSD": "36854121.79119584494223366248448",
+      "totalDepositBalanceUSD": "36854121.79119584494223366248448",
+      "totalBorrowBalanceUSD": "0",
+      "rates": [
+        {
+          "rate": "0",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x9bc98c2f20ac58287ef2c860eea53a2fdc27c17a7817ff1206c0b7840cc7cd79",
+      "name": "USDC / PT-reUSD-25JUN2026",
+      "inputToken": {
+        "symbol": "PT-reUSD-25JUN2026"
+      },
+      "totalValueLockedUSD": "34056878.37076220455155",
+      "totalDepositBalanceUSD": "34056878.37076220455155",
+      "totalBorrowBalanceUSD": "26405864.65673775451485",
+      "rates": [
+        {
+          "rate": "0.063892072992384",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.049538463675628502519907026553216",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x1590cb22d797e226df92ebc6e0153427e207299916e7e4e53461389ad68272fb",
+      "name": "USDC / wsrUSD",
+      "inputToken": {
+        "symbol": "wsrUSD"
+      },
+      "totalValueLockedUSD": "29990578.79182484902279",
+      "totalDepositBalanceUSD": "29990578.79182484902279",
+      "totalBorrowBalanceUSD": "25924461.40689472142213",
+      "rates": [
+        {
+          "rate": "0.042135503843232",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.036422779661114573705449292153568",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.945",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xe07d416323a1afbfe0bf2fe27ffb549ff565cf5c86d21b79fc60664038e597c9",
+      "name": "USDC / savUSD",
+      "inputToken": {
+        "symbol": "savUSD"
+      },
+      "totalValueLockedUSD": "27099628.54228219591764",
+      "totalDepositBalanceUSD": "27099628.54228219591764",
+      "totalBorrowBalanceUSD": "22939759.16245052705684",
+      "rates": [
+        {
+          "rate": "0.06726567115584",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.05694020099972986860968832286272",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xdbf4bc065d4e76f4505a523f2bba5e5ccdca94c16d67c3a6ff1dadbcbb26d4aa",
+      "name": "USDT / stcUSD",
+      "inputToken": {
+        "symbol": "stcUSD"
+      },
+      "totalValueLockedUSD": "21781973.3972428520685",
+      "totalDepositBalanceUSD": "21781973.3972428520685",
+      "totalBorrowBalanceUSD": "16641886.47104769099084",
+      "rates": [
+        {
+          "rate": "0.03787804743768",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.02893962607091514853286077135872",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x23a7d0ff682b323363fb8ba58327ed87001f6306e09b7fd7413bbe4698e749c8",
+      "name": "USDC / msY",
+      "inputToken": {
+        "symbol": "msY"
+      },
+      "totalValueLockedUSD": "21251292.92847684291",
+      "totalDepositBalanceUSD": "21251292.92847684291",
+      "totalBorrowBalanceUSD": "21251292.92847684291",
+      "rates": [
+        {
+          "rate": "0.6009611860512",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.6009611860512",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x34377fc4f617c51818e92c79df31ff270c6a91bc94ad32e367fdf59b9f4ac5dd",
+      "name": "USDC / weETH",
+      "inputToken": {
+        "symbol": "weETH"
+      },
+      "totalValueLockedUSD": "19237836.02026940606083357540575436",
+      "totalDepositBalanceUSD": "19237836.02026940606083357540575436",
+      "totalBorrowBalanceUSD": "6019189.42356390080738",
+      "rates": [
+        {
+          "rate": "0.046937126827008",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.04118916842204617563683191686144",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.77",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xb74aae3bada73b0bd1087bd110d35afaa390de0451e5745091fbb5d296684e1c",
+      "name": "USDT / USDT",
+      "inputToken": {
+        "symbol": "USDT"
+      },
+      "totalValueLockedUSD": "17108596.6346158243",
+      "totalDepositBalanceUSD": "17108596.6346158243",
+      "totalBorrowBalanceUSD": "17108596.6346158243",
+      "rates": [
+        {
+          "rate": "0.182192218068096",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.182192218068096",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.98",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xd570c19c0dc0fbe4ab7faf4a37c4150e1c141c8aada8ca3e1b4b6c1b712af93d",
+      "name": "USDC / stUSDS",
+      "inputToken": {
+        "symbol": "stUSDS"
+      },
+      "totalValueLockedUSD": "16337076.16616101574445",
+      "totalDepositBalanceUSD": "16337076.16616101574445",
+      "totalBorrowBalanceUSD": "13210629.63726307036954",
+      "rates": [
+        {
+          "rate": "0.052116037747776",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.042142526964130267543022868190464",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x002278ea242ec722813b4fe3c8eeaa07dbc331c731cc0b4248a1bf0771f933ea",
+      "name": "USDC / PST",
+      "inputToken": {
+        "symbol": "PST"
+      },
+      "totalValueLockedUSD": "15855436.08343349256",
+      "totalDepositBalanceUSD": "15855436.08343349256",
+      "totalBorrowBalanceUSD": "14366723.40357817318",
+      "rates": [
+        {
+          "rate": "0.039607085080944",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.035888261488717627829983569740208",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x4565ac05d38b19374ccbb04c17cca60ca9353cd41824f0803d0fc7704f60eaed",
+      "name": "USDC / reUSD",
+      "inputToken": {
+        "symbol": "reUSD"
+      },
+      "totalValueLockedUSD": "14728368.78839970533726",
+      "totalDepositBalanceUSD": "14728368.78839970533726",
+      "totalBorrowBalanceUSD": "11626040.15202408136165",
+      "rates": [
+        {
+          "rate": "0.045733817861136",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.03610061714218488506424812582496",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xef2c308b5abecf5c8750a1aa82b47c558005feb7a03f4f8e1ad682d71ac8d0ba",
+      "name": "USDC / mF-ONE",
+      "inputToken": {
+        "symbol": "mF-ONE"
+      },
+      "totalValueLockedUSD": "14601415.28859465012012",
+      "totalDepositBalanceUSD": "14601415.28859465012012",
+      "totalBorrowBalanceUSD": "12093978.0234627618571",
+      "rates": [
+        {
+          "rate": "0.055726156510416",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.046156547077696569783573631642896",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xbe50eed784490d6c32f398902b55eb5e1bd5af89e1f554993ad5fea899be090b",
+      "name": "PYUSD / WBTC",
+      "inputToken": {
+        "symbol": "WBTC"
+      },
+      "totalValueLockedUSD": "12232826.485936303729301056",
+      "totalDepositBalanceUSD": "12232826.485936303729301056",
+      "totalBorrowBalanceUSD": "3873187.438118",
+      "rates": [
+        {
+          "rate": "0.032933842692336",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.029850093373295513885087482232832",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x7e585a933ffe8443c371b4f8cfeb4430f5f6a14c2f32a898c26662c67a1cb8b8",
+      "name": "USDC / wstETH",
+      "inputToken": {
+        "symbol": "wstETH"
+      },
+      "totalValueLockedUSD": "10580073.96076707332526594267241805",
+      "totalDepositBalanceUSD": "10580073.96076707332526594267241805",
+      "totalBorrowBalanceUSD": "2652105.21269603699593",
+      "rates": [
+        {
+          "rate": "0.040813931786832",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.036160393279955967888490845723744",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xbbf7ce1b40d32d3e3048f5cf27eeaa6de8cb27b80194690aab191a63381d8c99",
+      "name": "USDC / siUSD",
+      "inputToken": {
+        "symbol": "siUSD"
+      },
+      "totalValueLockedUSD": "10331507.85594318602708",
+      "totalDepositBalanceUSD": "10331507.85594318602708",
+      "totalBorrowBalanceUSD": "9365730.20127492878383",
+      "rates": [
+        {
+          "rate": "0.06457440941424",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.05853806674816948724721150944352",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x4fe72543c5c95cd6b5f3cb516cd235ba882e2e705fe3424db6f99dfe5811d0d3",
+      "name": "USDT / cbBTC",
+      "inputToken": {
+        "symbol": "cbBTC"
+      },
+      "totalValueLockedUSD": "10252026.00087080936004",
+      "totalDepositBalanceUSD": "10252026.00087080936004",
+      "totalBorrowBalanceUSD": "7323451.88892812316846",
+      "rates": [
+        {
+          "rate": "0.035877993541632",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.02562915462281287288949813428224",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x94b823e6bd8ea533b4e33fbc307faea0b307301bc48763acc4d4aa4def7636cd",
+      "name": "USDC / WETH",
+      "inputToken": {
+        "symbol": "WETH"
+      },
+      "totalValueLockedUSD": "10021663.51509286319774044509819974",
+      "totalDepositBalanceUSD": "10021663.51509286319774044509819974",
+      "totalBorrowBalanceUSD": "3325919.41466110736239",
+      "rates": [
+        {
+          "rate": "0.041133638425248",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0361541776593044860578577925064",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xd9e34b1eed46d123ac1b69b224de1881dbc88798bc7b70f504920f62f58f28cc",
+      "name": "USDC / wstUSR",
+      "inputToken": {
+        "symbol": "wstUSR"
+      },
+      "totalValueLockedUSD": "10020296.38926398228538",
+      "totalDepositBalanceUSD": "10020296.38926398228538",
+      "totalBorrowBalanceUSD": "10020295.26869001732876",
+      "rates": [
+        {
+          "rate": "7.9999932900816",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "7.999992395438981413000352836608",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x9c28c8fa039a8df548a7f27adf062d751b0f2e9b9131931810535543adb23291",
+      "name": "USDC / apyUSD",
+      "inputToken": {
+        "symbol": "apyUSD"
+      },
+      "totalValueLockedUSD": "10010230.56044440055465",
+      "totalDepositBalanceUSD": "10010230.56044440055465",
+      "totalBorrowBalanceUSD": "8134192.60967496709228",
+      "rates": [
+        {
+          "rate": "0.01757529630864",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.01428147378657785106599327215488",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x69ef7fd17b42cd7df6d885aee1b11380837afbc1664b25587041cf193b31617b",
+      "name": "USDC / PT-USDat-27AUG2026",
+      "inputToken": {
+        "symbol": "PT-USDat-27AUG2026"
+      },
+      "totalValueLockedUSD": "9823384.98175134885566",
+      "totalDepositBalanceUSD": "9823384.98175134885566",
+      "totalBorrowBalanceUSD": "7434476.9888473032024",
+      "rates": [
+        {
+          "rate": "0.055938096122112",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.04233474400039520025538187553024",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xf8c5aa31ea6b2a068a9eddb46dd110cae57bf0f12be9583a3f9a818effecba89",
+      "name": "USDC / PT-USD3-17DEC2026",
+      "inputToken": {
+        "symbol": "PT-USD3-17DEC2026"
+      },
+      "totalValueLockedUSD": "9650388.68893412326963",
+      "totalDepositBalanceUSD": "9650388.68893412326963",
+      "totalBorrowBalanceUSD": "8144816.00754834356599",
+      "rates": [
+        {
+          "rate": "0.038662896610224",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.032631035843170757016423684377136",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x24852d8d7464402ddcd717415e009d42bf7427d6a8893487f83c75ee0f4a0ea6",
+      "name": "USDC / dCOMP",
+      "inputToken": {
+        "symbol": "dCOMP"
+      },
+      "totalValueLockedUSD": "9147114.67735085748",
+      "totalDepositBalanceUSD": "9147114.67735085748",
+      "totalBorrowBalanceUSD": "8246530.94435369003",
+      "rates": [
+        {
+          "rate": "0.1038579313824",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.093632547002195207313012657744",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.625",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xfd0d72a4f0469598b566b1bc5fe64835f828f90b1fb7d746148c086164cd4cc2",
+      "name": "USDC / AZND",
+      "inputToken": {
+        "symbol": "AZND"
+      },
+      "totalValueLockedUSD": "8719201.04021129163",
+      "totalDepositBalanceUSD": "8719201.04021129163",
+      "totalBorrowBalanceUSD": "8304296.011879714",
+      "rates": [
+        {
+          "rate": "0.267559791415344",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.254827902068417763469166035792896",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x3fea56ab83b05840dc83dc6b3d2f2fbd938147cbaa8126bac529e6c820058253",
+      "name": "USDT / PT-reUSD-25JUN2026",
+      "inputToken": {
+        "symbol": "PT-reUSD-25JUN2026"
+      },
+      "totalValueLockedUSD": "8512988.12351462004228",
+      "totalDepositBalanceUSD": "8512988.12351462004228",
+      "totalBorrowBalanceUSD": "6841483.1188221005613",
+      "rates": [
+        {
+          "rate": "0.05717150891208",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.04594601888603361483018982159464",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.915",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xa75bb490ecfee90c86a9d22ebc2dde42fb83478b3f18722b9fc6f5f668cab124",
+      "name": "USDC / PT-apyUSD-18JUN2026",
+      "inputToken": {
+        "symbol": "PT-apyUSD-18JUN2026"
+      },
+      "totalValueLockedUSD": "8145574.51055129649209",
+      "totalDepositBalanceUSD": "8145574.51055129649209",
+      "totalBorrowBalanceUSD": "7215482.45615380341245",
+      "rates": [
+        {
+          "rate": "0.123275055793536",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.109199050503736566596598666487296",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xff527fe9c6516f9d82a3d51422ccb031d123266e6e26d4c22c942a948c180a75",
+      "name": "EURC / WBTC",
+      "inputToken": {
+        "symbol": "WBTC"
+      },
+      "totalValueLockedUSD": "7998775.2791908261029579936",
+      "totalDepositBalanceUSD": "7998775.2791908261029579936",
+      "totalBorrowBalanceUSD": "2696869.0388159016",
+      "rates": [
+        {
+          "rate": "0.043763706451008",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.043290465753394089246878375143104",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x45671fb8d5dea1c4fbca0b8548ad742f6643300eeb8dbd34ad64a658b2b05bca",
+      "name": "USDT / cbBTC",
+      "inputToken": {
+        "symbol": "cbBTC"
+      },
+      "totalValueLockedUSD": "7603874.59382858376684",
+      "totalDepositBalanceUSD": "7603874.59382858376684",
+      "totalBorrowBalanceUSD": "6028804.37587595888196",
+      "rates": [
+        {
+          "rate": "0.031161406751136",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.02470661806181998158998996460912",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xb8fef900b383db2dbbf4458c7f46acf5b140f26d603a6d1829963f241b82510e",
+      "name": "USDC / OETH",
+      "inputToken": {
+        "symbol": "OETH"
+      },
+      "totalValueLockedUSD": "7583873.3681648208119",
+      "totalDepositBalanceUSD": "7583873.3681648208119",
+      "totalBorrowBalanceUSD": "6847670.64535563228986",
+      "rates": [
+        {
+          "rate": "0.050134834495728",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.045268007233252956357190196577888",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0x0a15460ad263c2186fe0b5df20a8cf71d55f3cfa06de15edcf6138f6b8edd8bf",
+      "name": "USDC / rETH",
+      "inputToken": {
+        "symbol": "rETH"
+      },
+      "totalValueLockedUSD": "7200475.90202314003088367642982929",
+      "totalDepositBalanceUSD": "7200475.90202314003088367642982929",
+      "totalBorrowBalanceUSD": "2275800.15811576953",
+      "rates": [
+        {
+          "rate": "0.04266107266464",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "0.0383735224533356995118032437264",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    },
+    {
+      "id": "0xe1b65304edd8ceaea9b629df4c3c926a37d1216e27900505c04f14b2ed279f33",
+      "name": "USDC / RLP",
+      "inputToken": {
+        "symbol": "RLP"
+      },
+      "totalValueLockedUSD": "6444729.83587943962165",
+      "totalDepositBalanceUSD": "6444729.83587943962165",
+      "totalBorrowBalanceUSD": "6444729.83587943962165",
+      "rates": [
+        {
+          "rate": "7.999999999933248",
+          "side": "BORROWER",
+          "type": "VARIABLE"
+        },
+        {
+          "rate": "7.999999999933248",
+          "side": "LENDER",
+          "type": "VARIABLE"
+        }
+      ],
+      "liquidationThreshold": "0.86",
+      "canBorrowFrom": true,
+      "isActive": true
+    }
+  ]
+}
