@@ -65,7 +65,7 @@ TOKEN_INFO = {
 
 # ─── ABIs ─────────────────────────────────────────────────────────────────────
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-from shared.morpho_abis import MORPHO_ABI, MORPHO_EVENTS_ABI, CHAINLINK_ABI
+from shared.morpho_abis import MORPHO_ABI, MORPHO_EVENTS_ABI, CHAINLINK_ABI, MORPHO_ORACLE_ABI
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # FONCTIONS UTILITAIRES
@@ -334,6 +334,7 @@ def calculer_pnl_position(
         params = morpho.functions.idToMarketParams(market_id_bytes).call()
         loan_token       = params[0]
         collateral_token = params[1]
+        oracle_address   = params[2]
         lltv             = params[4] / 1e18
 
         loan_info     = TOKEN_INFO.get(
@@ -362,6 +363,18 @@ def calculer_pnl_position(
 
     if not all([etat_t0, etat_t1, pos_t0, pos_t1]):
         return {"erreur": "Impossible de lire l'état on-chain — vérifier le RPC"}
+
+    # ── Prix oracle Morpho (ORACLE_PRICE_SCALE = 1e36) ────────────────────────
+    ORACLE_PRICE_SCALE = 1e36
+    oracle_price = None
+    try:
+        oracle_contract = w3.eth.contract(
+            address=Web3.to_checksum_address(oracle_address),
+            abi=MORPHO_ORACLE_ABI
+        )
+        oracle_price = oracle_contract.functions.price().call(block_identifier=bloc_t1)
+    except Exception as e:
+        print(f"  ⚠️  Impossible de lire le prix oracle : {e}")
 
     # ── Calcul de l'accrual des intérêts ──────────────────────────────────────
     #
@@ -407,6 +420,21 @@ def calculer_pnl_position(
     collateral_t0 = pos_t0["collateral"] / (10**coll_decimals)
     collateral_t1 = pos_t1["collateral"] / (10**coll_decimals)
     variation_collateral = collateral_t1 - collateral_t0
+
+    # ── Santé de la position (LTV / Health Factor) ────────────────────────────
+    ltv_pct       = None
+    health_factor = None
+    marge_liq_pct = None
+
+    if pos_t1["borrow_shares"] > 0 and oracle_price is not None and oracle_price > 0:
+        collateral_raw       = pos_t1["collateral"]
+        borrow_raw_t1        = pos_t1["borrow_shares"] * ratio_borrow_t1
+        collateral_value_raw = collateral_raw * oracle_price / ORACLE_PRICE_SCALE
+
+        if collateral_value_raw > 0:
+            ltv_pct       = borrow_raw_t1 / collateral_value_raw * 100
+            health_factor = (lltv * collateral_value_raw) / borrow_raw_t1
+            marge_liq_pct = lltv * 100 - ltv_pct
 
     # ── Taux d'utilisation du marché ──────────────────────────────────────────
     utilisation_t1 = (
@@ -461,6 +489,19 @@ def calculer_pnl_position(
         if flux_borrow != 0:
             print(f"    Flux capital    : {flux_borrow:>+15,.6f} {loan_symbol}  (emprunt/remboursement)")
         print(f"    Collatéral t₁   : {collateral_t1:>15,.6f} {coll_symbol}")
+
+        if ltv_pct is not None:
+            print(f"\n  SANTÉ DE POSITION (t₁) :")
+            print(f"    LTV actuel         : {ltv_pct:>14.2f} %")
+            print(f"    LLTV               : {lltv*100:>14.1f} %")
+            print(f"    Health Factor      : {health_factor:>14.4f}")
+            marge_str = f"{marge_liq_pct:>+.2f} pts"
+            if marge_liq_pct < 0:
+                print(f"    Marge liquidation  : {marge_str}  🚨 SOUS LE LLTV")
+            elif marge_liq_pct < lltv * 10:
+                print(f"    Marge liquidation  : {marge_str}  ⚠️  Proche")
+            else:
+                print(f"    Marge liquidation  : {marge_str}  ✅")
 
     print(f"\n  COÛTS OPÉRATIONNELS :")
     print(f"    Gas fees (ETH)  : {gas_data['gas_total_eth']:>15,.8f} ETH")
@@ -549,6 +590,19 @@ def calculer_pnl_position(
             "total_supply_assets_t1":   etat_t1["total_supply_assets"] / (10**loan_decimals),
             "total_borrow_assets_t1":   etat_t1["total_borrow_assets"] / (10**loan_decimals),
             "alerte_utilisation":       utilisation_t1 > 92,
+        },
+
+        # ── Santé de la position ──────────────────────────────────────────────
+        "sante_position": {
+            "ltv_pct":               round(ltv_pct, 4) if ltv_pct is not None else None,
+            "lltv_pct":              round(lltv * 100, 2),
+            "health_factor":         round(health_factor, 6) if health_factor is not None else None,
+            "marge_liquidation_pct": round(marge_liq_pct, 4) if marge_liq_pct is not None else None,
+            "oracle_price_raw":      oracle_price,
+            "oracle_price_scale":    int(ORACLE_PRICE_SCALE),
+            "note": ("LTV = emprunts / (collatéral × prix_oracle / échelle). "
+                     "Health Factor = LLTV × valeur_collatéral / emprunts. "
+                     "HF > 1 = sain ; HF < 1 = liquidable."),
         },
     }
 
